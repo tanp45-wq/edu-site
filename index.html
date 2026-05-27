@@ -3,108 +3,363 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Education Hub</title>
+  <title>EduHub – Learn. Explore. Grow.</title>
+  <meta name="description" content="EduHub is a premium educational platform with CGPA calculator, NPTEL courses, FFCS planner, and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
+
   <!-- Navigation -->
-  <nav id="navbar" class="navbar glass">
-    <div class="logo">EduHub</div>
-    <ul class="nav-links">
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#stats">Stats</a></li>
-      <li><a href="#globe">Explore</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#path">Path</a></li>
-    </ul>
-    <button class="nav-cta glass">Sign Up</button>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <div class="logo">Edu<span>Hub</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#cgpa-calculator">Calculator</a></li>
+        <li><a href="#nptel">NPTEL</a></li>
+        <li><a href="#ffcs">FFCS</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero glass">
+  <section id="hero" class="hero">
     <canvas id="hero-canvas"></canvas>
     <div class="hero-content">
-      <h1 class="hero-title gradient-text">Learn. Explore. Grow.</h1>
+      <div class="hero-badge">🚀 Next-Gen Learning Platform</div>
+      <h1 class="hero-title">Learn.<br /><span class="gradient-text">Explore.</span><br />Grow.</h1>
+      <p class="hero-sub">Your all-in-one academic companion with CGPA calculator, NPTEL courses, FFCS planner and much more.</p>
       <div class="hero-cta">
-        <a href="#courses" class="btn btn-primary">Start Learning</a>
-        <a href="#hero" class="btn btn-outline">Watch Demo</a>
+        <a href="#cgpa-calculator" class="btn btn-primary">Start Learning</a>
+        <a href="#cgpa-calculator" class="btn btn-outline">CGPA Calculator</a>
       </div>
     </div>
     <div class="scroll-indicator">
-      <span class="arrow"></span>
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <!-- Courses -->
-  <section id="courses" class="section">
-    <h2 class="section-title">Featured Courses</h2>
-    <div class="cards-grid">
-      <!-- Cards will be injected by cards.js -->
-    </div>
-  </section>
-
-  <!-- Stats -->
+  <!-- Stats Section -->
   <section id="stats" class="section">
-    <h2 class="section-title">Our Impact</h2>
-    <div class="stats-grid">
-      <!-- Stats will be injected by stats.js -->
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card glass reveal">
+          <div class="stat-icon">🎓</div>
+          <div class="stat-num" data-target="50000">0</div>
+          <div class="stat-label">Students Enrolled</div>
+        </div>
+        <div class="stat-card glass reveal">
+          <div class="stat-icon">📚</div>
+          <div class="stat-num" data-target="1200">0</div>
+          <div class="stat-label">Courses Available</div>
+        </div>
+        <div class="stat-card glass reveal">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-num" data-target="98">0</div>
+          <div class="stat-label">% Satisfaction Rate</div>
+        </div>
+        <div class="stat-card glass reveal">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-num" data-target="350">0</div>
+          <div class="stat-label">Expert Instructors</div>
+        </div>
+      </div>
     </div>
   </section>
+
+
   <!-- CGPA Calculator Section -->
   <section id="cgpa-calculator" class="section">
-    <h2 class="section-title">CGPA Calculator</h2>
-    <div class="calculator glass">
-      <div class="calc-inputs">
-        <label>Current CGPA: <input type="number" id="current-cgpa" min="0" max="10" step="0.01" placeholder="e.g., 8.5"></label>
-        <label>Completed Credits: <input type="number" id="completed-credits" min="0" step="1" placeholder="e.g., 60"></label>
-        <label>Target CGPA: <input type="number" id="target-cgpa" min="0" max="10" step="0.01" placeholder="e.g., 9.0"></label>
-        <label>Remaining Credits: <input type="number" id="remaining-credits" min="0" step="1" placeholder="e.g., 20"></label>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">TOOLS</span>
+        <h2 class="section-title">CGPA Calculator</h2>
+        <p class="section-sub">Calculate your required GPA and current CGPA instantly</p>
       </div>
-      <div class="calc-output">
-        Required GPA for remaining credits: <span id="required-gpa">-</span>
+      <div class="calc-wrapper">
+
+        <!-- Instant CGPA Calculator -->
+        <div class="calc-card glass reveal">
+          <h3 class="calc-heading">⚡ Instant CGPA Calculator</h3>
+          <p class="calc-desc">Add your subjects and credits to compute your CGPA</p>
+          <div id="subjects-list">
+            <div class="subject-row">
+              <input type="text" class="calc-input subject-name" placeholder="Subject name" />
+              <input type="number" class="calc-input subject-credits" placeholder="Credits" min="1" max="10" />
+              <select class="calc-input subject-grade">
+                <option value="10">S (10)</option>
+                <option value="9">A (9)</option>
+                <option value="8">B (8)</option>
+                <option value="7">C (7)</option>
+                <option value="6">D (6)</option>
+                <option value="5">E (5)</option>
+                <option value="0">F (0)</option>
+              </select>
+              <button class="remove-row" onclick="removeSubject(this)">✕</button>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-1" onclick="addSubject()">+ Add Subject</button>
+          <button class="btn btn-outline mt-1" onclick="computeCGPA()">Calculate CGPA</button>
+          <div class="calc-result" id="cgpa-result">
+            <div class="result-num" id="cgpa-output">--</div>
+            <div class="result-label">Your CGPA</div>
+          </div>
+        </div>
+
+        <!-- Required GPA Calculator -->
+        <div class="calc-card glass reveal">
+          <h3 class="calc-heading">🎯 Required GPA Planner</h3>
+          <p class="calc-desc">Find out what GPA you need in remaining semesters</p>
+          <div class="field-group">
+            <label class="field-label">Current CGPA</label>
+            <input type="number" id="current-cgpa" class="calc-input" min="0" max="10" step="0.01" placeholder="e.g., 8.5" oninput="computeRequired()" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Credits Completed</label>
+            <input type="number" id="completed-credits" class="calc-input" min="0" step="1" placeholder="e.g., 60" oninput="computeRequired()" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Target CGPA</label>
+            <input type="number" id="target-cgpa" class="calc-input" min="0" max="10" step="0.01" placeholder="e.g., 9.0" oninput="computeRequired()" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Remaining Credits</label>
+            <input type="number" id="remaining-credits" class="calc-input" min="0" step="1" placeholder="e.g., 20" oninput="computeRequired()" />
+          </div>
+          <div class="calc-result">
+            <div class="result-num" id="required-gpa">--</div>
+            <div class="result-label">Required GPA for Remaining Credits</div>
+          </div>
+          <div class="gpa-meter" id="gpa-meter" style="display:none">
+            <div class="meter-bar" id="meter-bar"></div>
+          </div>
+          <p id="gpa-advice" class="gpa-advice"></p>
+        </div>
+
+        <!-- GPA to Percentage -->
+        <div class="calc-card glass reveal">
+          <h3 class="calc-heading">🔄 GPA ↔ Percentage Converter</h3>
+          <p class="calc-desc">Convert between GPA (10-point scale) and percentage</p>
+          <div class="converter-tabs">
+            <button class="tab-btn active" id="tab-gpa" onclick="switchTab('gpa')">GPA → %</button>
+            <button class="tab-btn" id="tab-pct" onclick="switchTab('pct')">% → GPA</button>
+          </div>
+          <div id="gpa-to-pct">
+            <div class="field-group">
+              <label class="field-label">Enter GPA (0 – 10)</label>
+              <input type="number" id="input-gpa" class="calc-input" min="0" max="10" step="0.01" placeholder="e.g., 8.7" oninput="convertGPA()" />
+            </div>
+            <div class="calc-result">
+              <div class="result-num" id="output-pct">--</div>
+              <div class="result-label">Equivalent Percentage</div>
+            </div>
+          </div>
+          <div id="pct-to-gpa" style="display:none">
+            <div class="field-group">
+              <label class="field-label">Enter Percentage (0 – 100)</label>
+              <input type="number" id="input-pct" class="calc-input" min="0" max="100" step="0.1" placeholder="e.g., 87.5" oninput="convertPct()" />
+            </div>
+            <div class="calc-result">
+              <div class="result-num" id="output-gpa">--</div>
+              <div class="result-label">Equivalent GPA</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Interactive Globe -->
-  <section id="globe" class="section">
-    <h2 class="section-title">Explore by Subject</h2>
-    <canvas id="globe-canvas"></canvas>
+  <!-- NPTEL Section -->
+  <section id="nptel" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">FREE COURSES</span>
+        <h2 class="section-title">NPTEL Courses</h2>
+        <p class="section-sub">IIT & IISc certified courses — completely free</p>
+      </div>
+      <div class="nptel-filter reveal">
+        <button class="filter-btn active" onclick="filterNPTEL('all', this)">All</button>
+        <button class="filter-btn" onclick="filterNPTEL('CS', this)">Computer Science</button>
+        <button class="filter-btn" onclick="filterNPTEL('Math', this)">Mathematics</button>
+        <button class="filter-btn" onclick="filterNPTEL('EE', this)">Electrical</button>
+        <button class="filter-btn" onclick="filterNPTEL('Mech', this)">Mechanical</button>
+      </div>
+      <div class="cards-grid" id="nptelGrid"></div>
+    </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- FFCS Planner Section -->
+  <section id="ffcs" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">PLANNER</span>
+        <h2 class="section-title">FFCS Course Planner</h2>
+        <p class="section-sub">Plan your semester timetable the smart way</p>
+      </div>
+      <div class="ffcs-wrapper glass reveal">
+        <div class="ffcs-left">
+          <h3 class="calc-heading">Search & Add Courses</h3>
+          <input type="text" id="ffcs-search" class="calc-input" placeholder="Search course (e.g. Data Structures)" oninput="searchFFCS()" />
+          <div id="ffcs-results" class="ffcs-results"></div>
+          <div class="field-group" style="margin-top:1rem">
+            <label class="field-label">Total Credits Selected</label>
+            <div class="result-num" id="ffcs-credits">0</div>
+          </div>
+          <button class="btn btn-outline mt-1" onclick="clearFFCS()">Clear All</button>
+        </div>
+        <div class="ffcs-right">
+          <h3 class="calc-heading">Your Timetable</h3>
+          <table class="timetable" id="ffcs-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>8–9</th><th>9–10</th><th>10–11</th><th>11–12</th>
+                <th>12–1</th><th>1–2</th><th>2–3</th><th>3–4</th>
+              </tr>
+            </thead>
+            <tbody id="timetable-body"></tbody>
+          </table>
+          <div id="ffcs-selected-list" class="ffcs-selected-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
   <section id="testimonials" class="section">
-    <h2 class="section-title">What Our Learners Say</h2>
-    <div class="testimonials-carousel">
-      <!-- Carousel populated by testimonials.js -->
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">REVIEWS</span>
+        <h2 class="section-title">What Learners Say</h2>
+      </div>
+      <div class="testimonials-track" id="testimonialsTrack"></div>
+      <div class="testimonials-nav">
+        <button class="nav-dot active" onclick="goToSlide(0)"></button>
+        <button class="nav-dot" onclick="goToSlide(1)"></button>
+        <button class="nav-dot" onclick="goToSlide(2)"></button>
+        <button class="nav-dot" onclick="goToSlide(3)"></button>
+      </div>
     </div>
   </section>
 
   <!-- Learning Path -->
   <section id="path" class="section">
-    <h2 class="section-title">Learning Path</h2>
-    <div class="timeline-container">
-      <!-- Timeline built by timeline.js -->
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">ROADMAP</span>
+        <h2 class="section-title">Your Learning Path</h2>
+        <p class="section-sub">Follow a structured roadmap from beginner to expert</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
     </div>
   </section>
 
-  <footer class="footer glass">
-    <p>© 2026 EduHub. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom:.5rem">Edu<span>Hub</span></div>
+          <p style="opacity:.6;font-size:.9rem">Your all-in-one academic companion. Learn, plan and grow.</p>
+        </div>
+        <div>
+          <h4 class="footer-head">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#cgpa-calculator">CGPA Calculator</a></li>
+            <li><a href="#nptel">NPTEL</a></li>
+            <li><a href="#ffcs">FFCS Planner</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-head">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="#cgpa-calculator">GPA Calculator</a></li>
+            <li><a href="#cgpa-calculator">GPA Converter</a></li>
+            <li><a href="#ffcs">Timetable Planner</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-head">Connect</h4>
+          <div class="social-links">
+            <a href="#" class="social-btn">GitHub</a>
+            <a href="#" class="social-btn">LinkedIn</a>
+            <a href="#" class="social-btn">Twitter</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 EduHub. Built with ❤️ for learners everywhere.</p>
+      </div>
+    </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" integrity="sha512-GH7E2TQW4zWkVhW0rXkXl9E3e+vB9f0XFcVj3k9Z6qKz5J6v7xXGQb8uX1rJYlLj5XHQvXxM7E3F0d9cKpW0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-1tKf6lB8qV2V/5Z3J5V+Y7bY2D6Y6Wv+K2W1bI0Z6X9QF+6qJj9g8s6C9e+E+fZ5jN0F1gH7hU0V2HfZ+Q2Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="./js/animations.js"></script>
-  <script src="./js/hero-scene.js"></script>
-  <script src="./js/globe-scene.js"></script>
-  <script src="./js/cards.js"></script>
-  <script src="./js/stats.js"></script>
-  <script src="./js/testimonials.js"></script>
-  <script src="./js/timeline.js"></script>
-  <script src="./js/main.js"></script>
+  <!-- MessIt Section -->
+  <section id="messit" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">MESSIT</span>
+        <h2 class="section-title">Mess It 🍛</h2>
+        <p class="section-sub">Find mess menu by Hostel and Mess type</p>
+      </div>
+
+      <div class="calc-wrapper">
+        <div class="calc-card glass reveal">
+          <h3 class="calc-heading">Select your mess</h3>
+
+          <div class="field-group">
+            <label class="field-label" for="mess-hostel">Hostel</label>
+            <select id="mess-hostel" class="calc-input" onchange="renderMessMenu()">
+              <option value="">Select Hostel</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="mess-type">Mess Type</label>
+            <select id="mess-type" class="calc-input" onchange="renderMessMenu()">
+              <option value="">Select Mess Type</option>
+            </select>
+          </div>
+
+          <div class="calc-result">
+            <div class="result-num" id="mess-title">--</div>
+            <div class="result-label">Today’s Menu</div>
+          </div>
+
+          <p id="mess-advice" class="gpa-advice" style="margin-top:0.75rem;"></p>
+        </div>
+
+        <div class="calc-card glass reveal">
+          <h3 class="calc-heading">Menu</h3>
+          <p class="calc-desc">Menu cards will appear here based on your selection.</p>
+          <div id="mess-menu" class="ffcs-results" style="max-height: 360px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+  <script defer src="./js/hero-scene.js"></script>
+  <script defer src="./js/cards.js"></script>
+  <script defer src="./js/nptel.js"></script>
+  <script defer src="./js/ffcs.js"></script>
+  <script defer src="./js/stats.js"></script>
+  <script defer src="./js/testimonials.js"></script>
+  <script defer src="./js/timeline.js"></script>
+  <script defer src="./js/calculator.js"></script>
+  <script defer src="./js/main.js"></script>
+  <script defer src="./js/mess.js"></script>
 </body>
 </html>
+
+
+ 

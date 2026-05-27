@@ -1,49 +1,50 @@
-// main.js – initializes the site
+/* main.js – initializes the site (non-module) */
 
 // Navigation toggle (hamburger)
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
-if (hamburger) {
+
+if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('open');
   });
+
+  // Close mobile menu on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  });
 }
 
-// Close mobile menu on link click
-navLinks?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-  });
-});
-
-// IntersectionObserver for scroll-triggered animations
+// Reveal-on-scroll (matches CSS: .reveal.visible)
 const observerOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.2
+  threshold: 0.15
 };
 
-const animateOnScroll = (entries, observer) => {
+const revealOnScroll = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
+      entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
 };
 
-const scrollObserver = new IntersectionObserver(animateOnScroll, observerOptions);
+try {
+  const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
 
-// Add "in-view" to all sections that should animate
-document.querySelectorAll('.section').forEach(section => {
-  scrollObserver.observe(section);
-});
+  // Only animate elements that are explicitly marked as reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    scrollObserver.observe(el);
+  });
 
-// Initialize modules (they register themselves on load)
-import './hero-scene.js';
-import './globe-scene.js';
-import './cards.js';
-import './stats.js';
-import './testimonials.js';
-import './timeline.js';
-import './animations.js';
+  // Ensure hero is visible immediately (prevents "blank" feeling)
+  const hero = document.getElementById('hero');
+  if (hero) hero.style.opacity = '1';
+} catch (e) {
+  // Fallback: if IntersectionObserver fails, just show reveals
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+}
