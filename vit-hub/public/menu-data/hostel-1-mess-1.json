@@ -1,0 +1,657 @@
+{
+  "hostel": 1,
+  "mess": 1,
+  "menu": [
+    {
+      "date": "2026-05-01",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Kal Dosa, Vada Curry, Onion Chutney, Semiya Kichadi,sambar,Fresh Juice,Cold Milk,Cornflakes,BPB,Tea,Coffee,Milk,\nMoong Dal Sprout, Scrambeled Egg(2)."
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dhal,Tandoori Chicken,Panneer Fingers,White Rice, Sambar, Curd, Fryums,Gr.Veg Sabzhi(without potato), Pineapple Rasam,Sweet:Gulab Jamun."
+        },
+        {
+          "type": 3,
+          "menu": "Brownie Cake, Hot Badam Milk, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Makhani,Idly,Peanut Chutney White Rice,Sambar,Rasam,Jeera rice, Dhum Aloo/Banaras Aloo, Loose Curd, Cream of Tomato,Fruits:water melon"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-02",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Aloo Paratha,Curd,Pickle,Kitchadi,Mint Chutney,Sambar,Fresh  Juice,Cold Milk, Chocos, BBJ,Tea, Coffee, Milk,Salad,  Boiled Egg Masala."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka, Dal Maharani, Green Peas Masala,Dahi Vada,  Dal Rasam, Fryums,White Rice, Karakozhambu,veg kootu,Sweet:Rasamalai"
+        },
+        {
+          "type": 3,
+          "menu": "Tossed Veg SweetCorn(1cup) Ice Lemon Tea,  Coffee"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Dal Rajma,Mushroom Rice,Egg Rice, Gobi Manchurian,White Rice,Aloo podimas poriyal,Sambar,Rasam,Curd Spring Onion Soup,Fruits:Banana"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-03",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Paav Bhaji,Pongal,Vada,Sambar,Coconut  Chutney,Fresh Juice, Cold Milk, Corn Flakes,BBJ,Tea, Coffee, Milk,Green Salad,  Egg Burji (2nos)"
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dal tadka,Chicken Dum/Malliga Biryani,Musroom/Malliga Veg Biryani, Banaras Baigan,Onion Raitha, Allo 65/ Panneer Bhurji,White Rice, Tomato Rasam, Papad, Sweet :Assorted Ice Cream"
+        },
+        {
+          "type": 3,
+          "menu": "Paneer Puffs, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Banjara,Mixed veg gravy, White Rice,Drumstick Sambar,Rasam, Mint Pulav,Snake Gaurd Poriyal,Butter Milk,Sweet corn Soup,Fruits:Papaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-04",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Poori,Aloo,Semiya,Chutney,Banana Milk Shake, Cold Milk, Chocos,BPB,Tea, Coffee, Milk,Cow Peas Salad,Boiled Egg."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dhal Fry,Dragon Chicken,Dragon Panneer,Thai Fried Rice,Rasam, Bottle guard Poriyal,White Rice, Sambar, Wheel Chips,Curd,Sweet : Boondhi Laddu"
+        },
+        {
+          "type": 3,
+          "menu": "Spring roll, Sauce, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Podi Uttapam,Roti,Dhal,White Rice, Rasam,Sambar,Cocunet chutney,Rajma Pulav,Cabbage Poriyal,Cream of Mushroom, Fruits : grapes"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-05",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Idly, Vada, Sambar, Veg Kitchadi, Tomato Chutney,Fresh Juice, Cold Milk, Cornflakes,B,B,J, Tea, Coffee, Milk,Black channa Salad, Fried Eggs."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dal Thadka,Black eyed peas curry, White Rice, Pineapple Rasam, Butter Milk, Bisibilla Huliyana, Potato Chips,Sweet: Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Samosa, Imly Chutney, \nNanari sarpath, \nCoffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Veg & Egg Schezwan Fried Rice,Green moong Dhal,Carrot Beans Poriyal,Baby corn manjurian,White Rice,Sambar,Rasam,Butter Milk,Veg Manchow Soup,Hot Badam Milk,Banana."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-06",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Mysore Masala Dosa,Sambar,Corriander Chutney,Fresh Juice,Cold Milk,Chocos, BPB,Tea, Coffee, Milk,Green Salad,\nEgg Burji ( 2 nos )"
+        },
+        {
+          "type": 2,
+          "menu": "Diamond Chapathi,Dal Fry,Butter Chicken, Punjabi Palak Panneer,Curd,Aloo Methi/ Aloo Saagwala,White Rice,Sambar, Rasam, Fryums,Sweet : Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Burger, Sauce, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dhal Maharani,White Rice, Rasam,Sambar,Butter Milk,Bottle gaurd poriyal,Ghee rice,veg khurma,Pumkin pepper soup,Fruits:Water Melon."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-07",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Panneer Paratha, Pongal, Vada, Sambar, Coconut Chutney,Fresh Juice,Cold Milk, Cornflakes, BBJ,Tea,Coffee,Milk,Black Channa Sprout,Boiled Eggs(2 nos)."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Malabar Fish Curry/Masala FriedFish Nargesi Kuftha Curry,White Rice, Sambar, Rasam,Wheel Chips,Dal Fry, ButterMilk, Sweet: Rasagula."
+        },
+        {
+          "type": 3,
+          "menu": "Donut, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Poori,Channa Masala,White Rice,Sambar, Rasam,Vaangi Baath,Cabbage Poriyal, Curd,Cr. Of Brocoli Soup, Pappaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Kal Dosa, Vada Curry, Onion Chutney, Semiya Kichadi,sambar,Fresh Juice,Cold Milk,Cornflakes,BPB,Tea,Coffee,Milk,\nMoong Dal Sprout, Scrambeled Egg(2)."
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dhal,Tandoori Chicken,Panneer Fingers,White Rice, Sambar, Curd, Fryums,Gr.Veg Sabzhi(without potato), Pineapple Rasam,Sweet:Gulab Jamun."
+        },
+        {
+          "type": 3,
+          "menu": "Brownie Cake, Hot Badam Milk, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Makhani,Idly,Peanut Chutney White Rice,Sambar,Rasam,Jeera rice, Dhum Aloo/Banaras Aloo, Loose Curd, Cream of Tomato,Fruits:water melon"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-09",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Aloo Paratha,Curd,Pickle,Kitchadi,Mint Chutney,Sambar,Fresh  Juice,Cold Milk, Chocos, BBJ,Tea, Coffee, Milk,Salad,  Boiled Egg Masala."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka, Dal Maharani, Green Peas Masala,Dahi Vada,  Dal Rasam, Fryums,White Rice, Karakozhambu,veg kootu,Sweet:Rasamalai"
+        },
+        {
+          "type": 3,
+          "menu": "Tossed Veg SweetCorn(1cup) Ice Lemon Tea,  Coffee"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Dal Rajma,Mushroom Rice,Egg Rice, Gobi Manchurian,White Rice,Aloo podimas poriyal,Sambar,Rasam,Curd Spring Onion Soup,Fruits:Banana"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Paav Bhaji,Pongal,Vada,Sambar,Coconut  Chutney,Fresh Juice, Cold Milk, Corn Flakes,BBJ,Tea, Coffee, Milk,Green Salad,  Egg Burji (2nos)"
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dal tadka,Chicken Dum/Malliga Biryani,Musroom/Malliga Veg Biryani, Banaras Baigan,Onion Raitha, Allo 65/ Panneer Bhurji,White Rice, Tomato Rasam, Papad, Sweet :Assorted Ice Cream"
+        },
+        {
+          "type": 3,
+          "menu": "Paneer Puffs, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Banjara,Mixed veg gravy, White Rice,Drumstick Sambar,Rasam, Mint Pulav,Snake Gaurd Poriyal,Butter Milk,Sweet corn Soup,Fruits:Papaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-11",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Poori,Aloo,Semiya,Chutney,Banana Milk Shake, Cold Milk, Chocos,BPB,Tea, Coffee, Milk,Cow Peas Salad,Boiled Egg."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dhal Fry,Dragon Chicken,Dragon Panneer,Thai Fried Rice,Rasam, Bottle guard Poriyal,White Rice, Sambar, Wheel Chips,Curd,Sweet : Boondhi Laddu"
+        },
+        {
+          "type": 3,
+          "menu": "Spring roll, Sauce, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Podi Uttapam,Roti,Dhal,White Rice, Rasam,Sambar,Cocunet chutney,Rajma Pulav,Cabbage Poriyal,Cream of Mushroom, Fruits : grapes"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Idly, Vada, Sambar, Veg Kitchadi, Tomato Chutney,Fresh Juice, Cold Milk, Cornflakes,B,B,J, Tea, Coffee, Milk,Black channa Salad, Fried Eggs."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dal Thadka,Black eyed peas curry, White Rice, Pineapple Rasam, Butter Milk, Bisibilla Huliyana, Potato Chips,Sweet: Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Samosa, Imly Chutney, \nNanari sarpath, \nCoffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Veg & Egg Schezwan Fried Rice,Green moong Dhal,Carrot Beans Poriyal,Baby corn manjurian,White Rice,Sambar,Rasam,Butter Milk,Veg Manchow Soup,Hot Badam Milk,Banana."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-13",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Mysore Masala Dosa,Sambar,Corriander Chutney,Fresh Juice,Cold Milk,Chocos, BPB,Tea, Coffee, Milk,Green Salad,\nEgg Burji ( 2 nos )"
+        },
+        {
+          "type": 2,
+          "menu": "Diamond Chapathi,Dal Fry,Butter Chicken, Punjabi Palak Panneer,Curd,Aloo Methi/ Aloo Saagwala,White Rice,Sambar, Rasam, Fryums,Sweet : Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Burger, Sauce, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dhal Maharani,White Rice, Rasam,Sambar,Butter Milk,Bottle gaurd poriyal,Ghee rice,veg khurma,Pumkin pepper soup,Fruits:Water Melon."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-14",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Panneer Paratha, Pongal, Vada, Sambar, Coconut Chutney,Fresh Juice,Cold Milk, Cornflakes, BBJ,Tea,Coffee,Milk,Black Channa Sprout,Boiled Eggs(2 nos)."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Malabar Fish Curry/Masala FriedFish Nargesi Kuftha Curry,White Rice, Sambar, Rasam,Wheel Chips,Dal Fry, ButterMilk, Sweet: Rasagula."
+        },
+        {
+          "type": 3,
+          "menu": "Donut, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Poori,Channa Masala,White Rice,Sambar, Rasam,Vaangi Baath,Cabbage Poriyal, Curd,Cr. Of Brocoli Soup, Pappaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Kal Dosa, Vada Curry, Onion Chutney, Semiya Kichadi,sambar,Fresh Juice,Cold Milk,Cornflakes,BPB,Tea,Coffee,Milk,\nMoong Dal Sprout, Scrambeled Egg(2)."
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dhal,Tandoori Chicken,Panneer Fingers,White Rice, Sambar, Curd, Fryums,Gr.Veg Sabzhi(without potato), Pineapple Rasam,Sweet:Gulab Jamun."
+        },
+        {
+          "type": 3,
+          "menu": "Brownie Cake, Hot Badam Milk, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Makhani,Idly,Peanut Chutney White Rice,Sambar,Rasam,Jeera rice, Dhum Aloo/Banaras Aloo, Loose Curd, Cream of Tomato,Fruits:water melon"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-16",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Aloo Paratha,Curd,Pickle,Kitchadi,Mint Chutney,Sambar,Fresh  Juice,Cold Milk, Chocos, BBJ,Tea, Coffee, Milk,Salad,  Boiled Egg Masala."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka, Dal Maharani, Green Peas Masala,Dahi Vada,  Dal Rasam, Fryums,White Rice, Karakozhambu,veg kootu,Sweet:Rasamalai"
+        },
+        {
+          "type": 3,
+          "menu": "Tossed Veg SweetCorn(1cup) Ice Lemon Tea,  Coffee"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Dal Rajma,Mushroom Rice,Egg Rice, Gobi Manchurian,White Rice,Aloo podimas poriyal,Sambar,Rasam,Curd Spring Onion Soup,Fruits:Banana"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-17",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Paav Bhaji,Pongal,Vada,Sambar,Coconut  Chutney,Fresh Juice, Cold Milk, Corn Flakes,BBJ,Tea, Coffee, Milk,Green Salad,  Egg Burji (2nos)"
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dal tadka,Chicken Dum/Malliga Biryani,Musroom/Malliga Veg Biryani, Banaras Baigan,Onion Raitha, Allo 65/ Panneer Bhurji,White Rice, Tomato Rasam, Papad, Sweet :Assorted Ice Cream"
+        },
+        {
+          "type": 3,
+          "menu": "Paneer Puffs, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Banjara,Mixed veg gravy, White Rice,Drumstick Sambar,Rasam, Mint Pulav,Snake Gaurd Poriyal,Butter Milk,Sweet corn Soup,Fruits:Papaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-18",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Poori,Aloo,Semiya,Chutney,Banana Milk Shake, Cold Milk, Chocos,BPB,Tea, Coffee, Milk,Cow Peas Salad,Boiled Egg."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dhal Fry,Dragon Chicken,Dragon Panneer,Thai Fried Rice,Rasam, Bottle guard Poriyal,White Rice, Sambar, Wheel Chips,Curd,Sweet : Boondhi Laddu"
+        },
+        {
+          "type": 3,
+          "menu": "Spring roll, Sauce, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Podi Uttapam,Roti,Dhal,White Rice, Rasam,Sambar,Cocunet chutney,Rajma Pulav,Cabbage Poriyal,Cream of Mushroom, Fruits : grapes"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Idly, Vada, Sambar, Veg Kitchadi, Tomato Chutney,Fresh Juice, Cold Milk, Cornflakes,B,B,J, Tea, Coffee, Milk,Black channa Salad, Fried Eggs."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dal Thadka,Black eyed peas curry, White Rice, Pineapple Rasam, Butter Milk, Bisibilla Huliyana, Potato Chips,Sweet: Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Samosa, Imly Chutney, \nNanari sarpath, \nCoffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Veg & Egg Schezwan Fried Rice,Green moong Dhal,Carrot Beans Poriyal,Baby corn manjurian,White Rice,Sambar,Rasam,Butter Milk,Veg Manchow Soup,Hot Badam Milk,Banana."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Mysore Masala Dosa,Sambar,Corriander Chutney,Fresh Juice,Cold Milk,Chocos, BPB,Tea, Coffee, Milk,Green Salad,\nEgg Burji ( 2 nos )"
+        },
+        {
+          "type": 2,
+          "menu": "Diamond Chapathi,Dal Fry,Butter Chicken, Punjabi Palak Panneer,Curd,Aloo Methi/ Aloo Saagwala,White Rice,Sambar, Rasam, Fryums,Sweet : Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Burger, Sauce, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dhal Maharani,White Rice, Rasam,Sambar,Butter Milk,Bottle gaurd poriyal,Ghee rice,veg khurma,Pumkin pepper soup,Fruits:Water Melon."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Panneer Paratha, Pongal, Vada, Sambar, Coconut Chutney,Fresh Juice,Cold Milk, Cornflakes, BBJ,Tea,Coffee,Milk,Black Channa Sprout,Boiled Eggs(2 nos)."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Malabar Fish Curry/Masala FriedFish Nargesi Kuftha Curry,White Rice, Sambar, Rasam,Wheel Chips,Dal Fry, ButterMilk, Sweet: Rasagula."
+        },
+        {
+          "type": 3,
+          "menu": "Donut, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Poori,Channa Masala,White Rice,Sambar, Rasam,Vaangi Baath,Cabbage Poriyal, Curd,Cr. Of Brocoli Soup, Pappaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Kal Dosa, Vada Curry, Onion Chutney, Semiya Kichadi,sambar,Fresh Juice,Cold Milk,Cornflakes,BPB,Tea,Coffee,Milk,\nMoong Dal Sprout, Scrambeled Egg(2)."
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dhal,Tandoori Chicken,Panneer Fingers,White Rice, Sambar, Curd, Fryums,Gr.Veg Sabzhi(without potato), Pineapple Rasam,Sweet:Gulab Jamun."
+        },
+        {
+          "type": 3,
+          "menu": "Brownie Cake, Hot Badam Milk, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Makhani,Idly,Peanut Chutney White Rice,Sambar,Rasam,Jeera rice, Dhum Aloo/Banaras Aloo, Loose Curd, Cream of Tomato,Fruits:water melon"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Aloo Paratha,Curd,Pickle,Kitchadi,Mint Chutney,Sambar,Fresh  Juice,Cold Milk, Chocos, BBJ,Tea, Coffee, Milk,Salad,  Boiled Egg Masala."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka, Dal Maharani, Green Peas Masala,Dahi Vada,  Dal Rasam, Fryums,White Rice, Karakozhambu,veg kootu,Sweet:Rasamalai"
+        },
+        {
+          "type": 3,
+          "menu": "Tossed Veg SweetCorn(1cup) Ice Lemon Tea,  Coffee"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Dal Rajma,Mushroom Rice,Egg Rice, Gobi Manchurian,White Rice,Aloo podimas poriyal,Sambar,Rasam,Curd Spring Onion Soup,Fruits:Banana"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Paav Bhaji,Pongal,Vada,Sambar,Coconut  Chutney,Fresh Juice, Cold Milk, Corn Flakes,BBJ,Tea, Coffee, Milk,Green Salad,  Egg Burji (2nos)"
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dal tadka,Chicken Dum/Malliga Biryani,Musroom/Malliga Veg Biryani, Banaras Baigan,Onion Raitha, Allo 65/ Panneer Bhurji,White Rice, Tomato Rasam, Papad, Sweet :Assorted Ice Cream"
+        },
+        {
+          "type": 3,
+          "menu": "Paneer Puffs, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Banjara,Mixed veg gravy, White Rice,Drumstick Sambar,Rasam, Mint Pulav,Snake Gaurd Poriyal,Butter Milk,Sweet corn Soup,Fruits:Papaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-25",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Poori,Aloo,Semiya,Chutney,Banana Milk Shake, Cold Milk, Chocos,BPB,Tea, Coffee, Milk,Cow Peas Salad,Boiled Egg."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dhal Fry,Dragon Chicken,Dragon Panneer,Thai Fried Rice,Rasam, Bottle guard Poriyal,White Rice, Sambar, Wheel Chips,Curd,Sweet : Boondhi Laddu"
+        },
+        {
+          "type": 3,
+          "menu": "Spring roll, Sauce, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Podi Uttapam,Roti,Dhal,White Rice, Rasam,Sambar,Cocunet chutney,Rajma Pulav,Cabbage Poriyal,Cream of Mushroom, Fruits : grapes"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-26",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Idly, Vada, Sambar, Veg Kitchadi, Tomato Chutney,Fresh Juice, Cold Milk, Cornflakes,B,B,J, Tea, Coffee, Milk,Black channa Salad, Fried Eggs."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Dal Thadka,Black eyed peas curry, White Rice, Pineapple Rasam, Butter Milk, Bisibilla Huliyana, Potato Chips,Sweet: Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Samosa, Imly Chutney, \nNanari sarpath, \nCoffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Veg & Egg Schezwan Fried Rice,Green moong Dhal,Carrot Beans Poriyal,Baby corn manjurian,White Rice,Sambar,Rasam,Butter Milk,Veg Manchow Soup,Hot Badam Milk,Banana."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Mysore Masala Dosa,Sambar,Corriander Chutney,Fresh Juice,Cold Milk,Chocos, BPB,Tea, Coffee, Milk,Green Salad,\nEgg Burji ( 2 nos )"
+        },
+        {
+          "type": 2,
+          "menu": "Diamond Chapathi,Dal Fry,Butter Chicken, Punjabi Palak Panneer,Curd,Aloo Methi/ Aloo Saagwala,White Rice,Sambar, Rasam, Fryums,Sweet : Carrot Halwa."
+        },
+        {
+          "type": 3,
+          "menu": "Veg Burger, Sauce, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dhal Maharani,White Rice, Rasam,Sambar,Butter Milk,Bottle gaurd poriyal,Ghee rice,veg khurma,Pumkin pepper soup,Fruits:Water Melon."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-28",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Panneer Paratha, Pongal, Vada, Sambar, Coconut Chutney,Fresh Juice,Cold Milk, Cornflakes, BBJ,Tea,Coffee,Milk,Black Channa Sprout,Boiled Eggs(2 nos)."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka,Malabar Fish Curry/Masala FriedFish Nargesi Kuftha Curry,White Rice, Sambar, Rasam,Wheel Chips,Dal Fry, ButterMilk, Sweet: Rasagula."
+        },
+        {
+          "type": 3,
+          "menu": "Donut, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Poori,Channa Masala,White Rice,Sambar, Rasam,Vaangi Baath,Cabbage Poriyal, Curd,Cr. Of Brocoli Soup, Pappaya."
+        }
+      ]
+    },
+    {
+      "date": "2026-05-29",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Kal Dosa, Vada Curry, Onion Chutney, Semiya Kichadi,sambar,Fresh Juice,Cold Milk,Cornflakes,BPB,Tea,Coffee,Milk,\nMoong Dal Sprout, Scrambeled Egg(2)."
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dhal,Tandoori Chicken,Panneer Fingers,White Rice, Sambar, Curd, Fryums,Gr.Veg Sabzhi(without potato), Pineapple Rasam,Sweet:Gulab Jamun."
+        },
+        {
+          "type": 3,
+          "menu": "Brownie Cake, Hot Badam Milk, Tea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Makhani,Idly,Peanut Chutney White Rice,Sambar,Rasam,Jeera rice, Dhum Aloo/Banaras Aloo, Loose Curd, Cream of Tomato,Fruits:water melon"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-30",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Aloo Paratha,Curd,Pickle,Kitchadi,Mint Chutney,Sambar,Fresh  Juice,Cold Milk, Chocos, BBJ,Tea, Coffee, Milk,Salad,  Boiled Egg Masala."
+        },
+        {
+          "type": 2,
+          "menu": "Phulka, Dal Maharani, Green Peas Masala,Dahi Vada,  Dal Rasam, Fryums,White Rice, Karakozhambu,veg kootu,Sweet:Rasamalai"
+        },
+        {
+          "type": 3,
+          "menu": "Tossed Veg SweetCorn(1cup) Ice Lemon Tea,  Coffee"
+        },
+        {
+          "type": 4,
+          "menu": "Chapathi,Dal Rajma,Mushroom Rice,Egg Rice, Gobi Manchurian,White Rice,Aloo podimas poriyal,Sambar,Rasam,Curd Spring Onion Soup,Fruits:Banana"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-31",
+      "menu": [
+        {
+          "type": 1,
+          "menu": "Paav Bhaji,Pongal,Vada,Sambar,Coconut  Chutney,Fresh Juice, Cold Milk, Corn Flakes,BBJ,Tea, Coffee, Milk,Green Salad,  Egg Burji (2nos)"
+        },
+        {
+          "type": 2,
+          "menu": "Chapathi,Dal tadka,Chicken Dum/Malliga Biryani,Musroom/Malliga Veg Biryani, Banaras Baigan,Onion Raitha, Allo 65/ Panneer Bhurji,White Rice, Tomato Rasam, Papad, Sweet :Assorted Ice Cream"
+        },
+        {
+          "type": 3,
+          "menu": "Paneer Puffs, \nTea, Coffee, Milk"
+        },
+        {
+          "type": 4,
+          "menu": "Phulka,Dal Banjara,Mixed veg gravy, White Rice,Drumstick Sambar,Rasam, Mint Pulav,Snake Gaurd Poriyal,Butter Milk,Sweet corn Soup,Fruits:Papaya."
+        }
+      ]
+    }
+  ]
+}

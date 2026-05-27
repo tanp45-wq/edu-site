@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          I am a creative and detail-oriented marketing enthusiast and software engineer with hands-on experience in visual storytelling, brand identity, and digital content creation. As Design Head at Vellore Institute of Technology, I have led branding and promotional strategies for student organizations and large-scale cultural events. Skilled in graphic design, typography, and social media engagement, I bring a strategic approach to crafting compelling visuals that enhance audience connection and drive engagement.
         </p>
       </div>
     </div>

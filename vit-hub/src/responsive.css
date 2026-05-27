@@ -1,0 +1,59 @@
+/* responsive.css - Mobile and Tablet Adjustments */
+
+@media (max-width: 768px) {
+  /* Reduce overall padding and font sizes for smaller screens */
+  .overlay-container header.interactive {
+    top: 12px;
+    left: 12px;
+  }
+
+  .overlay-container header.interactive h1 {
+    font-size: 20px;
+  }
+
+  .overlay-container header.interactive span {
+    font-size: 10px;
+  }
+
+  .glass-panel {
+    max-width: 260px;
+    padding: 12px 16px;
+  }
+
+  .glass-panel h3 {
+    font-size: 12px;
+  }
+
+  .glass-panel ul {
+    font-size: 10px;
+  }
+
+  /* Make sure canvas fills the viewport */
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-container header.interactive h1 {
+    font-size: 18px;
+  }
+
+  .overlay-container header.interactive span {
+    font-size: 9px;
+  }
+
+  .glass-panel {
+    max-width: 240px;
+    padding: 10px 14px;
+  }
+
+  .glass-panel h3 {
+    font-size: 11px;
+  }
+
+  .glass-panel ul {
+    font-size: 9px;
+  }
+}

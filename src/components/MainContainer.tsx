@@ -6,8 +6,8 @@ import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-import WhatIDo from "./WhatIDo";
-import Work from "./Work";
+const WhatIDo = lazy(() => import("./WhatIDo"));
+const Work = lazy(() => import("./Work"));
 import setSplitText from "./utils/splitText";
 
 const TechStack = lazy(() => import("./TechStack"));
@@ -40,9 +40,13 @@ const MainContainer = ({ children }: PropsWithChildren) => {
           <div className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
             <About />
-            <WhatIDo />
+            <Suspense fallback={<div className="loading">Loading Skills...</div>}>
+              <WhatIDo />
+            </Suspense>
             <Career />
-            <Work />
+            <Suspense fallback={<div className="loading">Loading Work...</div>}>
+              <Work />
+            </Suspense>
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />

@@ -15,43 +15,37 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Integrated M.Tech Student</h4>
+                <h5>Vellore Institute of Technology (VIT)</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>2024 - 2029</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Pursuing an Integrated M.Tech in Software Engineering. Building strong foundations in data structures, algorithmic analysis, web technologies, and database systems, while blending technology with user-centric design.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Design Head</h4>
+                <h5>Yuva Marathi Club, VIT</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>2025 - PRESENT</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Leading visual branding, flyer designs, and creative direction for club events. Coordinating with teams to create aesthetic digital assets, promotional posters, and branding guidelines for large-scale events.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Content Strategist & Lead Designer</h4>
+                <h5>Social Media Campaigns</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>2026 - PRESENT</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Spearheaded an interactive Reels strategy, optimizing short-form videos for audience engagement. Successfully converted digital impressions into increased physical student turnouts at club and campus cultural events.
             </p>
           </div>
         </div>
