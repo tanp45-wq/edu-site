@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Education Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar glass">
+    <div class="logo">EduHub</div>
+    <ul class="nav-links">
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#globe">Explore</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#path">Path</a></li>
+    </ul>
+    <button class="nav-cta glass">Sign Up</button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero glass">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title gradient-text">Learn. Explore. Grow.</h1>
+      <div class="hero-cta">
+        <a href="#courses" class="btn btn-primary">Start Learning</a>
+        <a href="#hero" class="btn btn-outline">Watch Demo</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span class="arrow"></span>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses" class="section">
+    <h2 class="section-title">Featured Courses</h2>
+    <div class="cards-grid">
+      <!-- Cards will be injected by cards.js -->
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section id="stats" class="section">
+    <h2 class="section-title">Our Impact</h2>
+    <div class="stats-grid">
+      <!-- Stats will be injected by stats.js -->
+    </div>
+  </section>
+  <!-- CGPA Calculator Section -->
+  <section id="cgpa-calculator" class="section">
+    <h2 class="section-title">CGPA Calculator</h2>
+    <div class="calculator glass">
+      <div class="calc-inputs">
+        <label>Current CGPA: <input type="number" id="current-cgpa" min="0" max="10" step="0.01" placeholder="e.g., 8.5"></label>
+        <label>Completed Credits: <input type="number" id="completed-credits" min="0" step="1" placeholder="e.g., 60"></label>
+        <label>Target CGPA: <input type="number" id="target-cgpa" min="0" max="10" step="0.01" placeholder="e.g., 9.0"></label>
+        <label>Remaining Credits: <input type="number" id="remaining-credits" min="0" step="1" placeholder="e.g., 20"></label>
+      </div>
+      <div class="calc-output">
+        Required GPA for remaining credits: <span id="required-gpa">-</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Globe -->
+  <section id="globe" class="section">
+    <h2 class="section-title">Explore by Subject</h2>
+    <canvas id="globe-canvas"></canvas>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section">
+    <h2 class="section-title">What Our Learners Say</h2>
+    <div class="testimonials-carousel">
+      <!-- Carousel populated by testimonials.js -->
+    </div>
+  </section>
+
+  <!-- Learning Path -->
+  <section id="path" class="section">
+    <h2 class="section-title">Learning Path</h2>
+    <div class="timeline-container">
+      <!-- Timeline built by timeline.js -->
+    </div>
+  </section>
+
+  <footer class="footer glass">
+    <p>© 2026 EduHub. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" integrity="sha512-GH7E2TQW4zWkVhW0rXkXl9E3e+vB9f0XFcVj3k9Z6qKz5J6v7xXGQb8uX1rJYlLj5XHQvXxM7E3F0d9cKpW0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-1tKf6lB8qV2V/5Z3J5V+Y7bY2D6Y6Wv+K2W1bI0Z6X9QF+6qJj9g8s6C9e+E+fZ5jN0F1gH7hU0V2HfZ+Q2Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./js/animations.js"></script>
+  <script src="./js/hero-scene.js"></script>
+  <script src="./js/globe-scene.js"></script>
+  <script src="./js/cards.js"></script>
+  <script src="./js/stats.js"></script>
+  <script src="./js/testimonials.js"></script>
+  <script src="./js/timeline.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
