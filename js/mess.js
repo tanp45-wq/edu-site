@@ -1,163 +1,199 @@
-// mess.js – MessIt section data + rendering (no network dependencies)
-
-// Static demo data (safe defaults)
-const MESS_DATA = {
-  "Hostel A": {
-    "Veg Mess": [
-      { time: "Breakfast", items: ["Idli", "Sambar", "Coconut Chutney"] },
-      { time: "Lunch", items: ["Rice", "Dal", "Veg Curry", "Curd"] },
-      { time: "Snacks", items: ["Samosa", "Chai"] },
-      { time: "Dinner", items: ["Chapati", "Mixed Veg", "Raita"] }
-    ],
-    "Non-Veg Mess": [
-      { time: "Breakfast", items: ["Poha", "Egg/Paneer Option"] },
-      { time: "Lunch", items: ["Rice", "Chicken/Paneer Curry", "Salad"] },
-      { time: "Snacks", items: ["Buns", "Tea"] },
-      { time: "Dinner", items: ["Biriyani", "Curd", "Papad"] }
-    ]
+// mess.js – Complete VIT Mess Menu functionality
+const MESS_MENU = {
+  "Special": {
+    "Monday": {
+      breakfast: "Masala Dosa, Chutney, Sambar, Bread, Butter, Jam, Tea/Coffee/Milk",
+      lunch: "Chapati, Rice, Dal Makhani, Paneer Butter Masala, Rasam, Curd, Pickle, Salad",
+      snacks: "Samosa, Mint Chutney, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Gobi Manchurian, Rasam, Hot Milk, Fruit"
+    },
+    "Tuesday": {
+      breakfast: "Puri, Aloo Sabji, Bread, Butter, Jam, Tea/Coffee/Milk",
+      lunch: "Roti, Veg Pulao, Dal Fry, Veg Kolhapuri, Rasam, Curd, Papad",
+      snacks: "Bhel Puri, Tea/Coffee",
+      dinner: "Chapati, Jeera Rice, Dal Tadka, Aloo Gobi, Hot Milk, Ice Cream"
+    },
+    "Wednesday": {
+      breakfast: "Idli, Vada, Chutney, Sambar, Bread, Butter, Jam, Tea/Coffee",
+      lunch: "Chapati, Rice, Rajma Masala, Aloo Jeera, Rasam, Curd, Pickle",
+      snacks: "Pani Puri, Tea/Coffee",
+      dinner: "Chapati, Veg Biryani, Dal Fry, Paneer Tikka Masala, Raita, Hot Milk"
+    },
+    "Thursday": {
+      breakfast: "Aloo Paratha, Curd, Pickle, Bread, Butter, Jam, Tea/Coffee",
+      lunch: "Chapati, Rice, Chana Masala, Mix Veg, Rasam, Curd, Salad",
+      snacks: "Pav Bhaji, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Makhani, Malai Kofta, Rasam, Hot Milk, Sweet"
+    },
+    "Friday": {
+      breakfast: "Uttapam, Chutney, Sambar, Bread, Butter, Jam, Tea/Coffee",
+      lunch: "Roti, Rice, Dal Tadka, Kadhai Paneer, Rasam, Curd, Papad",
+      snacks: "Aloo Tikki Chaat, Tea/Coffee",
+      dinner: "Chapati, Veg Fried Rice, Dal Fry, Veg Manchurian, Hot Milk, Fruit"
+    },
+    "Saturday": {
+      breakfast: "Poha, Jalebi, Bread, Butter, Jam, Tea/Coffee/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Bhindi Masala, Rasam, Curd, Pickle",
+      snacks: "Dahi Vada, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Paneer Bhurji, Rasam, Hot Milk, Pastry"
+    },
+    "Sunday": {
+      breakfast: "Chole Bhature, Bread, Butter, Jam, Tea/Coffee/Milk",
+      lunch: "Chapati, Veg Pulao, Dal Makhani, Shahi Paneer, Raita, Salad, Ice Cream",
+      snacks: "Maggi, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Fry, Mix Veg Curry, Rasam, Hot Milk"
+    }
   },
-  "Hostel B": {
-    "Veg Mess": [
-      { time: "Breakfast", items: ["Dosa", "Sambar", "Chutney"] },
-      { time: "Lunch", items: ["Rice", "Rajma", "Bhindi Masala", "Curd"] },
-      { time: "Snacks", items: ["Cutlets", "Juice"] },
-      { time: "Dinner", items: ["Roti", "Chole", "Salad"] }
-    ]
+  "Non-Veg": {
+    "Monday": {
+      breakfast: "Dosa, Chutney, Sambar, Boiled Egg, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Chicken Curry, Rasam, Curd, Pickle",
+      snacks: "Samosa, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Egg Curry, Rasam, Hot Milk"
+    },
+    "Tuesday": {
+      breakfast: "Puri, Aloo Sabji, Omelette, Bread, Jam, Tea/Milk",
+      lunch: "Roti, Rice, Dal Fry, Veg Sabji, Rasam, Curd, Papad",
+      snacks: "Onion Pakoda, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Chicken Masala, Hot Milk, Sweet"
+    },
+    "Wednesday": {
+      breakfast: "Idli, Vada, Chutney, Boiled Egg, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Fish Curry, Rasam, Curd, Pickle",
+      snacks: "Cake/Puff, Tea/Coffee",
+      dinner: "Chapati, Chicken Biryani, Raita, Chicken 65, Hot Milk"
+    },
+    "Thursday": {
+      breakfast: "Pongal, Vada, Omelette, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Makhani, Chicken Korma, Rasam, Curd",
+      snacks: "Vada Pav, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Fry, Egg Bhurji, Hot Milk, Fruit"
+    },
+    "Friday": {
+      breakfast: "Upma, Chutney, Boiled Egg, Bread, Jam, Tea/Milk",
+      lunch: "Roti, Rice, Dal Tadka, Chicken Roast, Rasam, Curd",
+      snacks: "Mirchi Bajji, Tea/Coffee",
+      dinner: "Chapati, Egg Fried Rice, Chilli Chicken, Hot Milk"
+    },
+    "Saturday": {
+      breakfast: "Aloo Paratha, Curd, Omelette, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Veg Sabji, Rasam, Curd",
+      snacks: "Sweet Corn, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Chicken Curry, Hot Milk, Ice Cream"
+    },
+    "Sunday": {
+      breakfast: "Chole Bhature, Boiled Egg, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Chicken Pulao, Chicken Gravy, Raita, Salad",
+      snacks: "Biscuits/Rusk, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Fry, Egg Curry, Hot Milk"
+    }
   },
-  "Hostel C": {
-    "Veg Mess": [
-      { time: "Breakfast", items: ["Upma", "Veg Sandwich"] },
-      { time: "Lunch", items: ["Rice", "Sambar", "Aloo Gobi", "Curd"] },
-      { time: "Snacks", items: ["Pakoda", "Tea"] },
-      { time: "Dinner", items: ["Pulao", "Raita"] }
-    ],
-    "Non-Veg Mess": [
-      { time: "Breakfast", items: ["Paratha", "Egg/Paneer Option"] },
-      { time: "Lunch", items: ["Rice", "Mutton/Paneer Curry", "Salad"] },
-      { time: "Snacks", items: ["Fried Snack", "Tea"] },
-      { time: "Dinner", items: ["Noodles", "Gobi Manchurian"] }
-    ]
+  "Veg": {
+    "Monday": {
+      breakfast: "Dosa, Chutney, Sambar, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Aloo Gobi, Rasam, Curd, Pickle",
+      snacks: "Samosa, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Mix Veg, Rasam, Hot Milk"
+    },
+    "Tuesday": {
+      breakfast: "Puri, Aloo Sabji, Bread, Jam, Tea/Milk",
+      lunch: "Roti, Rice, Dal Fry, Cabbage Sabji, Rasam, Curd, Papad",
+      snacks: "Onion Pakoda, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Chana Masala, Hot Milk, Sweet"
+    },
+    "Wednesday": {
+      breakfast: "Idli, Vada, Chutney, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Soya Chunk Curry, Rasam, Curd",
+      snacks: "Cake/Puff, Tea/Coffee",
+      dinner: "Chapati, Veg Biryani, Raita, Gobi 65, Hot Milk"
+    },
+    "Thursday": {
+      breakfast: "Pongal, Vada, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Makhani, Aloo Matar, Rasam, Curd",
+      snacks: "Vada Pav, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Fry, Bhindi Fry, Hot Milk, Fruit"
+    },
+    "Friday": {
+      breakfast: "Upma, Chutney, Bread, Jam, Tea/Milk",
+      lunch: "Roti, Rice, Dal Tadka, Lauki Sabji, Rasam, Curd",
+      snacks: "Mirchi Bajji, Tea/Coffee",
+      dinner: "Chapati, Veg Fried Rice, Veg Manchurian, Hot Milk"
+    },
+    "Saturday": {
+      breakfast: "Aloo Paratha, Curd, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Rice, Dal Fry, Rajma, Rasam, Curd",
+      snacks: "Sweet Corn, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Tadka, Aloo Palak, Hot Milk, Ice Cream"
+    },
+    "Sunday": {
+      breakfast: "Chole Bhature, Bread, Jam, Tea/Milk",
+      lunch: "Chapati, Veg Pulao, Paneer Curry, Raita, Salad",
+      snacks: "Biscuits/Rusk, Tea/Coffee",
+      dinner: "Chapati, Rice, Dal Fry, Matar Mushroom, Hot Milk"
+    }
   }
 };
 
-function safeEl(id) {
-  return document.getElementById(id);
-}
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let currentMess = "Special";
+let currentDay = DAYS[new Date().getDay()];
 
-function populateHostels() {
-  const hostelSelect = safeEl('mess-hostel');
-  const typeSelect = safeEl('mess-type');
-  if (!hostelSelect || !typeSelect) return;
+function initMessIt() {
+  const messSelect = document.getElementById('mess-select');
+  const daySelect = document.getElementById('day-select');
+  if(!messSelect || !daySelect) return;
 
-  hostelSelect.innerHTML = `<option value="">Select Hostel</option>`;
-  Object.keys(MESS_DATA).forEach(hostel => {
-    hostelSelect.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(hostel)}">${escapeHtml(hostel)}</option>`);
+  // Set today's date
+  document.getElementById('today-date').textContent = new Date().toDateString();
+
+  daySelect.value = currentDay;
+
+  messSelect.addEventListener('change', (e) => {
+    currentMess = e.target.value;
+    renderMenu();
+  });
+  
+  daySelect.addEventListener('change', (e) => {
+    currentDay = e.target.value;
+    renderMenu();
   });
 
-  // Reset types
-  typeSelect.innerHTML = `<option value="">Select Mess Type</option>`;
+  renderMenu();
 }
 
-function populateTypesForHostel(hostel) {
-  const typeSelect = safeEl('mess-type');
-  if (!typeSelect) return;
+function renderMenu() {
+  const menuData = MESS_MENU[currentMess][currentDay];
+  
+  const bfastEl = document.getElementById('menu-breakfast');
+  const lunchEl = document.getElementById('menu-lunch');
+  const snacksEl = document.getElementById('menu-snacks');
+  const dinnerEl = document.getElementById('menu-dinner');
 
-  typeSelect.innerHTML = `<option value="">Select Mess Type</option>`;
+  if(bfastEl) bfastEl.innerHTML = formatItems(menuData.breakfast);
+  if(lunchEl) lunchEl.innerHTML = formatItems(menuData.lunch);
+  if(snacksEl) snacksEl.innerHTML = formatItems(menuData.snacks);
+  if(dinnerEl) dinnerEl.innerHTML = formatItems(menuData.dinner);
 
-  const hostelData = MESS_DATA[hostel];
-  if (!hostelData) return;
-
-  Object.keys(hostelData).forEach(type => {
-    typeSelect.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`);
-  });
+  highlightCurrentMeal();
 }
 
-function renderMessMenu() {
-  const hostel = safeEl('mess-hostel')?.value || '';
-  const type = safeEl('mess-type')?.value || '';
-
-  const titleEl = safeEl('mess-title');
-  const menuEl = safeEl('mess-menu');
-  const adviceEl = safeEl('mess-advice');
-
-  if (!titleEl || !menuEl) return;
-
-  const hasHostel = !!hostel;
-  const hasType = !!type;
-
-  if (!hasHostel || !hasType) {
-    titleEl.textContent = '--';
-    menuEl.innerHTML = '';
-    if (adviceEl) {
-      adviceEl.textContent = 'Select both Hostel and Mess Type to view menu.';
-      adviceEl.style.color = '#fbbf24';
-    }
-    return;
-  }
-
-  const dayMenu = MESS_DATA?.[hostel]?.[type];
-  if (!dayMenu || !Array.isArray(dayMenu)) {
-    titleEl.textContent = 'No menu found';
-    menuEl.innerHTML = '';
-    if (adviceEl) {
-      adviceEl.textContent = 'Menu data is not available for this selection.';
-      adviceEl.style.color = '#f87171';
-    }
-    return;
-  }
-
-  titleEl.textContent = `${hostel} • ${type}`;
-
-  const cards = dayMenu.map(section => {
-    const items = section.items?.map(i => `<li>${escapeHtml(i)}</li>`).join('') || '';
-    return `
-      <div class="ffcs-result-item" style="cursor:default; align-items:flex-start;">
-        <div style="font-weight:700; color: var(--blue2); min-width: 110px;">${escapeHtml(section.time)}</div>
-        <div style="flex:1;">
-          <ul style="margin:0; padding-left: 1.1rem; color: var(--text-dim);">
-            ${items}
-          </ul>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  menuEl.innerHTML = cards;
-
-  if (adviceEl) {
-    adviceEl.textContent = 'Tip: selections update instantly.';
-    adviceEl.style.color = '#34d399';
-  }
+function formatItems(mealStr) {
+  return mealStr.split(',').map(item => `<span class="menu-item-tag">${item.trim()}</span>`).join('');
 }
 
-// Helpers
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '<')
-    .replaceAll('>', '>')
-    .replaceAll('"', '"')
-    .replaceAll("'", '&#039;');
+function highlightCurrentMeal() {
+  const hour = new Date().getHours();
+  document.querySelectorAll('.meal-card').forEach(card => card.classList.remove('active-meal'));
+
+  if(hour >= 6 && hour < 10) document.getElementById('card-breakfast')?.classList.add('active-meal');
+  else if(hour >= 11 && hour < 15) document.getElementById('card-lunch')?.classList.add('active-meal');
+  else if(hour >= 15 && hour < 18) document.getElementById('card-snacks')?.classList.add('active-meal');
+  else if(hour >= 19 && hour < 22) document.getElementById('card-dinner')?.classList.add('active-meal');
 }
 
-// Init
-(function initMess() {
-  populateHostels();
-
-  const hostelSelect = safeEl('mess-hostel');
-  if (hostelSelect) {
-    hostelSelect.addEventListener('change', () => {
-      populateTypesForHostel(hostelSelect.value);
-      renderMessMenu();
-    });
-  }
-
-  // If user changes mess-type directly
-  const typeSelect = safeEl('mess-type');
-  if (typeSelect) {
-    typeSelect.addEventListener('change', () => renderMessMenu());
-  }
-
-  // Expose to inline handlers
-  window.renderMessMenu = renderMessMenu;
-})();
+// Run init when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMessIt);
+} else {
+  initMessIt();
+}

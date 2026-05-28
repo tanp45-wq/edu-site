@@ -3,172 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduHubvit – FFCS Planner</title>
-  <meta name="description" content="EduHubvit FFCS timetable planner to search, add courses, and build your schedule." />
+  <title>FFCS Planner - EduHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .ffcs-container { max-width: 1200px; margin: 8rem auto 4rem; padding: 0 2rem; display: grid; grid-template-columns: 350px 1fr; gap: 2rem; }
+    @media (max-width: 900px) { .ffcs-container { grid-template-columns: 1fr; } }
+    
+    .ffcs-sidebar { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; height: fit-content; }
+    .ffcs-header { margin-bottom: 2rem; }
+    .ffcs-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
+    
+    .search-box { position: relative; margin-bottom: 1.5rem; }
+    .search-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 1rem 1rem 1rem 2.5rem; border-radius: 12px; outline: none; }
+    .search-input:focus { border-color: var(--blue-b); }
+    .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
+    
+    .ffcs-results { display: flex; flex-direction: column; gap: 0.5rem; max-height: 250px; overflow-y: auto; }
+    .ffcs-result-item { padding: 0.8rem; background: rgba(255,255,255,0.02); border: 1px solid transparent; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; transition: 0.2s; }
+    .ffcs-result-item:hover { background: rgba(37,99,235,0.1); border-color: var(--blue-b); }
+    
+    .selected-courses { margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; }
+    .ffcs-chip { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; border: 1px solid; font-size: 0.9rem; }
+    .ffcs-chip button { background: none; border: none; color: inherit; cursor: pointer; opacity: 0.7; transition: 0.2s; }
+    .ffcs-chip button:hover { opacity: 1; transform: scale(1.1); }
+    
+    .action-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .btn-clear { flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid #ef4444; background: rgba(239,68,68,0.1); color: #ef4444; cursor: pointer; transition: 0.3s; }
+    .btn-clear:hover { background: #ef4444; color: #fff; }
+    .btn-export { flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--blue-b); background: rgba(37,99,235,0.1); color: var(--blue-b); cursor: pointer; transition: 0.3s; }
+    .btn-export:hover { background: var(--blue-b); color: #fff; }
+
+    .timetable-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; overflow-x: auto; }
+    .timetable { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .timetable th, .timetable td { border: 1px solid var(--glass-border); padding: 1rem; text-align: center; }
+    .timetable th { background: rgba(255,255,255,0.02); color: var(--text-dim); font-weight: 500; font-size: 0.85rem; }
+    .timetable td { height: 80px; transition: 0.3s; }
+    .timetable td.occupied { font-weight: 600; font-size: 0.9rem; border-left: 3px solid; }
+  </style>
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav id="navbar" class="navbar">
     <div class="nav-inner">
-      <div class="logo">eduhub<span>vit</span></div>
+      <div class="logo"><a href="./index.html" style="color:inherit;text-decoration:none">eduhub<span>vit</span></a></div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="./index.html">Home</a></li>
         <li><a href="./cgpa-calculator.html">Calculator</a></li>
         <li><a href="./nptel.html">NPTEL</a></li>
-        <li><a href="./ffcs.html">FFCS</a></li>
+        <li><a href="./ffcs.html" class="active">FFCS</a></li>
         <li><a href="./reviews.html">Reviews</a></li>
         <li><a href="./messit.html">MessIt</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <section class="hero" id="hero" style="min-height:auto; padding-top:110px; padding-bottom:3rem;">
-    <canvas id="hero-canvas" style="display:none;"></canvas>
-    <div class="hero-content" style="max-width: 1000px;">
-      <div class="hero-badge">📅 FFCS Planner</div>
-      <h1 class="hero-title">Search.<br /><span class="gradient-text">Add.</span><br />Schedule.</h1>
-      <p class="hero-sub" style="margin-bottom:1.5rem;">
-        Build your semester timetable by searching courses and adding them to your grid.
-      </p>
-    </div>
-  </section>
-
-  <!-- FFCS Planner Section -->
-  <section id="ffcs" class="section" style="padding-top: 2rem;">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">PLANNER</span>
-        <h2 class="section-title">FFCS Course Planner</h2>
-        <p class="section-sub">Plan your semester timetable the smart way</p>
+  <div class="ffcs-container">
+    <div class="ffcs-sidebar reveal">
+      <div class="ffcs-header">
+        <h1>FFCS Builder</h1>
+        <p style="color:var(--text-dim)">CampusBro-style interactive planner with conflict detection</p>
       </div>
 
-      <div class="ffcs-wrapper glass reveal">
-        <div class="ffcs-left">
-          <h3 class="calc-heading">Search &amp; Add Courses</h3>
-          <input type="text" id="ffcs-search" class="calc-input" placeholder="Search course (e.g. Data Structures)" oninput="searchFFCS()" />
-          <div id="ffcs-results" class="ffcs-results"></div>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="ffcs-search" class="search-input" placeholder="Search by course code or name..." oninput="searchFFCS()" />
+      </div>
+      
+      <div class="ffcs-results" id="ffcs-results"></div>
 
-          <div class="field-group" style="margin-top:1rem">
-            <label class="field-label">Total Credits Selected</label>
-            <div class="result-num" id="ffcs-credits">0</div>
-          </div>
-
-          <button class="btn btn-outline mt-1" onclick="clearFFCS()">Clear All</button>
-        </div>
-
-        <div class="ffcs-right">
-          <h3 class="calc-heading">Your Timetable</h3>
-          <table class="timetable" id="ffcs-table">
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>8–9</th><th>9–10</th><th>10–11</th><th>11–12</th>
-                <th>12–1</th><th>1–2</th><th>2–3</th><th>3–4</th>
-              </tr>
-            </thead>
-            <tbody id="timetable-body"></tbody>
-          </table>
-          <div id="ffcs-selected-list" class="ffcs-selected-list"></div>
+      <div class="selected-courses">
+        <h3 style="color:#fff;margin-bottom:1rem;display:flex;justify-content:space-between">
+          Selected Courses
+          <span style="color:var(--text-dim);font-size:0.9rem;font-weight:400"><span id="ffcs-credits">0</span> cr</span>
+        </h3>
+        <div id="ffcs-selected-list"></div>
+        
+        <div class="action-buttons">
+          <button class="btn-clear" onclick="clearFFCS()">Clear All</button>
+          <button class="btn-export" onclick="exportTimetable()">Export JSON</button>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="logo" style="margin-bottom:.5rem">eduhub<span>vit</span></div>
-          <p style="opacity:.6;font-size:.9rem">Your all-in-one academic companion. Learn, plan and grow.</p>
-        </div>
-        <div>
-          <h4 class="footer-head">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">CGPA Calculator</a></li>
-            <li><a href="./nptel.html">NPTEL</a></li>
-            <li><a href="./ffcs.html">FFCS Planner</a></li>
-            <li><a href="./messit.html">MessIt</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Tools</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">GPA Calculator</a></li>
-            <li><a href="./cgpa-calculator.html">GPA Converter</a></li>
-            <li><a href="./ffcs.html">Timetable Planner</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Connect</h4>
-          <div class="social-links">
-            <a href="#" class="social-btn">GitHub</a>
-            <a href="#" class="social-btn">LinkedIn</a>
-            <a href="#" class="social-btn">Twitter</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 EduHub. Built with ❤️ for learners everywhere.</p>
-      </div>
+    <div class="timetable-wrapper reveal">
+      <table class="timetable">
+        <thead>
+          <tr>
+            <th>DAY</th>
+            <th>08:00 - 08:50</th>
+            <th>09:00 - 09:50</th>
+            <th>10:00 - 10:50</th>
+            <th>11:00 - 11:50</th>
+            <th>12:00 - 12:50</th>
+            <th>14:00 - 14:50</th>
+            <th>15:00 - 15:50</th>
+            <th>16:00 - 16:50</th>
+          </tr>
+        </thead>
+        <tbody id="timetable-body">
+          <!-- Rendered via JS -->
+        </tbody>
+      </table>
     </div>
-  </footer>
-
-  <!-- Chatbot Widget -->
-  <div class="chatbot-launcher" aria-hidden="false">
-    <button
-      id="chatbot-toggle"
-      class="chatbot-toggle"
-      type="button"
-      aria-label="Open chat assistant"
-      aria-controls="chatbot-panel"
-      aria-expanded="false"
-    >
-      <span aria-hidden="true">💬</span>
-      <span class="chatbot-badge" aria-hidden="true">!</span>
-    </button>
   </div>
 
-  <section id="chatbot-panel" class="chatbot-panel" aria-label="Chat assistant" aria-live="polite">
-    <header class="chatbot-header">
-      <div class="chatbot-title">
-        <div class="chatbot-avatar" aria-hidden="true">✦</div>
-        <div>
-          EduHubvit Assistant
-          <div class="chatbot-subtitle">Ask about CGPA, GPA planning, NPTEL, FFCS, or MessIt</div>
-        </div>
-      </div>
-      <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat assistant">✕</button>
-    </header>
-
-    <div id="chatbot-chips" class="chatbot-chips" aria-label="Quick prompts">
-      <button class="chatbot-chip" type="button" data-chip="How to calculate CGPA?">CGPA</button>
-      <button class="chatbot-chip" type="button" data-chip="Required GPA planner?">Required GPA</button>
-      <button class="chatbot-chip" type="button" data-chip="NPTEL courses">NPTEL</button>
-      <button class="chatbot-chip" type="button" data-chip="FFCS timetable planner">FFCS</button>
-      <button class="chatbot-chip" type="button" data-chip="MessIt menu">MessIt</button>
-    </div>
-
-    <div id="chatbot-messages" class="chatbot-messages" role="list" aria-label="Chat messages"></div>
-
-    <div class="chatbot-inputbar">
-      <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Type your question..." aria-label="Type your message" autocomplete="off" />
-      <button id="chatbot-send" class="chatbot-send" type="button" aria-label="Send message">➤</button>
-    </div>
-  </section>
-
-  <!-- Scripts -->
-  <script defer src="./js/ffcs.js"></script>
-  <script defer src="./js/main.js"></script>
-  <script defer src="./js/chatbot.js"></script>
+  <script src="./js/ffcs.js"></script>
 </body>
 </html>

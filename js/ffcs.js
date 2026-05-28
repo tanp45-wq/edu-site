@@ -1,4 +1,5 @@
-// ffcs.js – FFCS Course Planner
+// ffcs.js – Advanced FFCS Planner (CampusBro Style)
+
 const FFCS_DATA = [
   { code: 'CSE1001', name: 'Problem Solving & OOP', credits: 5, slots: ['A1','L1'], color: '#2563eb' },
   { code: 'CSE1002', name: 'Data Structures', credits: 5, slots: ['B1','L3'], color: '#7c3aed' },
@@ -12,9 +13,11 @@ const FFCS_DATA = [
   { code: 'MEE1001', name: 'Engineering Mechanics', credits: 4, slots: ['D2','L8'], color: '#f97316' },
   { code: 'EEE1001', name: 'Basic Electrical Engg', credits: 4, slots: ['E2','L10'], color: '#a3e635' },
   { code: 'CSE4001', name: 'Machine Learning', credits: 5, slots: ['G1','L13'], color: '#38bdf8' },
+  { code: 'STS1001', name: 'Soft Skills I', credits: 2, slots: ['F2'], color: '#fbbf24' },
+  { code: 'CHY1002', name: 'Environmental Sciences', credits: 3, slots: ['G2'], color: '#4ade80' }
 ];
 
-// Slot-to-timetable mapping (simplified VIT-style)
+// Simplified mapping matching actual FFCS Timetable
 const SLOT_MAP = {
   A1: { days: [1,3], times: [0,1] }, A2: { days: [2,4], times: [0,1] },
   B1: { days: [1,3], times: [2,3] }, B2: { days: [2,4], times: [2,3] },
@@ -33,100 +36,22 @@ const SLOT_MAP = {
 };
 
 const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
-const TIMES_LABELS = ['8-9', '9-10', '10-11', '11-12', '12-1', '1-2', '2-3', '3-4'];
 
 let selectedCourses = [];
-// timetable[day][time] = {name, short, color}
-let timetable = Array.from({ length: 5 }, () => Array(8).fill(null));
-
-// Slot clash state
-let lastClashEl = null;
-
-function animateClashWarning(message) {
-  // Create/reuse a floating warning element
-  let el = lastClashEl;
-  if (!el) {
-    el = document.createElement('div');
-    el.id = 'slot-clash-warning';
-    el.style.position = 'fixed';
-    el.style.left = '50%';
-    el.style.top = '96px';
-    el.style.transform = 'translateX(-50%)';
-    el.style.zIndex = '2000';
-    el.style.padding = '12px 16px';
-    el.style.borderRadius = '14px';
-    el.style.background = 'rgba(239,68,68,0.15)';
-    el.style.border = '1px solid rgba(239,68,68,0.5)';
-    el.style.color = '#fecaca';
-    el.style.fontWeight = '700';
-    el.style.fontSize = '0.95rem';
-    el.style.boxShadow = '0 0 0 6px rgba(239,68,68,0.12), 0 18px 60px rgba(0,0,0,0.45)';
-    el.style.opacity = '0';
-    el.style.pointerEvents = 'none';
-    el.style.transition = 'opacity 180ms ease, transform 180ms ease';
-    el.style.backdropFilter = 'blur(10px)';
-    el.style.webkitBackdropFilter = 'blur(10px)';
-    document.body.appendChild(el);
-    lastClashEl = el;
-  }
-
-  el.textContent = message;
-
-  // Neon pulse via box-shadow
-  const start = () => {
-    el.style.opacity = '1';
-    el.style.transform = 'translateX(-50%) translateY(0)';
-    el.style.boxShadow = '0 0 0 6px rgba(239,68,68,0.16), 0 18px 60px rgba(0,0,0,0.45)';
-  };
-  const end = () => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateX(-50%) translateY(-6px)';
-  };
-
-  end();
-  // ensure style recalculated
-  requestAnimationFrame(() => {
-    start();
-    setTimeout(end, 1200);
-  });
-}
+let timetable = Array.from({length: 5}, () => Array(8).fill(null));
 
 function buildTimetableHTML() {
   const tbody = document.getElementById('timetable-body');
   if (!tbody) return;
-
-  tbody.innerHTML = DAYS.map((day, di) => {
-    return `<tr>
+  tbody.innerHTML = DAYS.map((day, di) =>
+    `<tr>
       <td style="font-weight:700;color:#fff;font-size:0.75rem">${day}</td>
-      ${timetable[di].map((cell) => {
-        const cls = cell ? 'occupied' : '';
-        const bg = cell ? `background:${cell.color}22;color:${cell.color};border-color:${cell.color}44` : '';
-        return `<td class="${cls}" style="${bg}">${cell ? cell.short : ''}</td>`;
-      }).join('')}
-    </tr>`;
-  }).join('');
+      ${timetable[di].map((cell, ti) =>
+        `<td class="${cell ? 'occupied' : ''}" style="${cell ? 'background:' + cell.color + '22;color:' + cell.color + ';border-color:' + cell.color + '44' : ''}">${cell ? cell.short : ''}</td>`
+      ).join('')}
+    </tr>`
+  ).join('');
 }
-
-function canPlaceCourse(course) {
-  // returns {ok:boolean, clashes:[{dayIndex,timeIndex}...]}
-  const clashes = [];
-  const short = course.code.slice(-4);
-  for (const slot of course.slots) {
-    const map = SLOT_MAP[slot];
-    if (!map) continue;
-
-    for (const d of map.days) {
-      for (const t of map.times) {
-        if (d < 5 && t < 8) {
-          if (timetable[d][t]) clashes.push({ d, t, existing: timetable[d][t] });
-        }
-      }
-    }
-  }
-
-  return { ok: clashes.length === 0, clashes, short };
-}
-
 
 function buildSelectedChips() {
   const el = document.getElementById('ffcs-selected-list');
@@ -142,17 +67,36 @@ function buildSelectedChips() {
   ).join('');
 }
 
-function addCourse(course) {
-  if (selectedCourses.find(c => c.code === course.code)) return;
+function checkConflict(course) {
+  for (let slot of course.slots) {
+    const map = SLOT_MAP[slot];
+    if (!map) continue;
+    for (let d of map.days) {
+      for (let t of map.times) {
+        if (d < 5 && t < 8 && timetable[d][t]) {
+          return timetable[d][t].name;
+        }
+      }
+    }
+  }
+  return null;
+}
 
-  const placement = canPlaceCourse(course);
-  if (!placement.ok) {
-    animateClashWarning(`⚠️ Slot Clash Conflict! ${course.code} overlaps another course.`);
+function addCourse(courseStr) {
+  const course = JSON.parse(decodeURIComponent(courseStr));
+  if (selectedCourses.find(c => c.code === course.code)) {
+    showToast(`⚠️ ${course.code} is already added!`);
+    return;
+  }
+  
+  // Conflict detection
+  const conflict = checkConflict(course);
+  if (conflict) {
+    showToast(`❌ Conflict detected! Slot clashes with ${conflict}.`);
     return;
   }
 
-  const short = placement.short;
-
+  const short = course.code.slice(-4);
   course.slots.forEach(slot => {
     const map = SLOT_MAP[slot];
     if (!map) return;
@@ -162,18 +106,18 @@ function addCourse(course) {
       });
     });
   });
-
+  
   selectedCourses.push(course);
   buildTimetableHTML();
   buildSelectedChips();
   document.getElementById('ffcs-results').innerHTML = '';
   document.getElementById('ffcs-search').value = '';
+  
+  showToast(`✅ ${course.code} added successfully!`);
 }
-
 
 function removeCourse(idx) {
   const course = selectedCourses[idx];
-  // Clear cells
   for (let d = 0; d < 5; d++)
     for (let t = 0; t < 8; t++)
       if (timetable[d][t] && timetable[d][t].name === course.name)
@@ -181,6 +125,7 @@ function removeCourse(idx) {
   selectedCourses.splice(idx, 1);
   buildTimetableHTML();
   buildSelectedChips();
+  showToast(`🗑️ ${course.code} removed.`);
 }
 
 function clearFFCS() {
@@ -188,6 +133,7 @@ function clearFFCS() {
   timetable = Array.from({length: 5}, () => Array(8).fill(null));
   buildTimetableHTML();
   buildSelectedChips();
+  showToast(`🧹 Timetable cleared!`);
 }
 
 function searchFFCS() {
@@ -197,15 +143,62 @@ function searchFFCS() {
   if (!q) { results.innerHTML = ''; return; }
   const matches = FFCS_DATA.filter(c =>
     c.name.toLowerCase().includes(q) || c.code.toLowerCase().includes(q)
-  ).slice(0, 6);
+  ).slice(0, 8);
+  
   results.innerHTML = matches.map(c =>
-    `<div class="ffcs-result-item" onclick='addCourse(${JSON.stringify(c)})'>
+    `<div class="ffcs-result-item" onclick="addCourse('${encodeURIComponent(JSON.stringify(c))}')">
       <span>${c.code} – ${c.name}</span>
       <span style="color:var(--text-dim);font-size:.75rem">${c.credits} cr | ${c.slots.join(', ')}</span>
     </div>`
   ).join('');
 }
 
+// Toast notification system
+function showToast(msg) {
+  let toast = document.getElementById('toast-container');
+  if(!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast-container';
+    toast.style.cssText = 'position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;gap:0.5rem;';
+    document.body.appendChild(toast);
+  }
+  
+  const msgEl = document.createElement('div');
+  msgEl.textContent = msg;
+  msgEl.style.cssText = 'background:var(--glass-bg);color:#fff;padding:1rem 1.5rem;border-radius:12px;border:1px solid var(--glass-border);backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,0.5);transform:translateX(100%);transition:0.3s;font-size:0.9rem;';
+  
+  toast.appendChild(msgEl);
+  setTimeout(() => msgEl.style.transform = 'translateX(0)', 10);
+  
+  setTimeout(() => {
+    msgEl.style.transform = 'translateX(100%)';
+    setTimeout(() => msgEl.remove(), 300);
+  }, 3000);
+}
+
+// Export as JSON logic (Bonus feature for saving timetable)
+function exportTimetable() {
+  if (selectedCourses.length === 0) {
+    showToast("⚠️ No courses to export!");
+    return;
+  }
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(selectedCourses));
+  const downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "my_timetable.json");
+  document.body.appendChild(downloadAnchorNode);
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+  showToast("💾 Timetable exported successfully!");
+}
+
 // Init
-buildTimetableHTML();
-buildSelectedChips();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    buildTimetableHTML();
+    buildSelectedChips();
+  });
+} else {
+  buildTimetableHTML();
+  buildSelectedChips();
+}

@@ -3,175 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduHubvit – MessIt</title>
-  <meta name="description" content="EduHubvit MessIt tool to find mess menu by Hostel and Mess type." />
+  <title>MessIt - VIT Mess Menu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .mess-container { max-width: 900px; margin: 8rem auto 4rem; padding: 0 2rem; }
+    .mess-header { text-align: center; margin-bottom: 3rem; }
+    .mess-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; margin-bottom: 1rem; color: #fff; }
+    .mess-header h1 span { color: var(--blue-b); }
+    .mess-controls { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
+    .mess-select { 
+      background: var(--glass-bg); border: 1px solid var(--glass-border); color: #fff; 
+      padding: 0.8rem 1.5rem; border-radius: 12px; font-size: 1rem; cursor: pointer; outline: none; backdrop-filter: blur(10px);
+    }
+    .mess-select option { background: var(--navy); color: #fff; }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .meal-card { 
+      background: var(--glass-bg); border: 1px solid var(--glass-border); 
+      border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s;
+    }
+    .meal-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.2); }
+    .active-meal { border-color: var(--blue-b); box-shadow: 0 0 20px var(--blue-glow); }
+    .active-meal::before {
+      content: 'NOW'; position: absolute; top: 1rem; right: 1rem;
+      background: var(--blue-b); color: #fff; font-size: 0.7rem; font-weight: bold;
+      padding: 0.3rem 0.6rem; border-radius: 20px;
+    }
+    .meal-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+    .meal-time { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1.5rem; display: block; }
+    .menu-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .menu-item-tag { 
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; color: var(--text-dim);
+    }
+    @media (max-width: 768px) { .menu-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-
   <!-- Navigation -->
   <nav id="navbar" class="navbar">
     <div class="nav-inner">
-      <div class="logo">eduhub<span>vit</span></div>
+      <div class="logo"><a href="./index.html" style="color:inherit;text-decoration:none">eduhub<span>vit</span></a></div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="./index.html">Home</a></li>
         <li><a href="./cgpa-calculator.html">Calculator</a></li>
         <li><a href="./nptel.html">NPTEL</a></li>
         <li><a href="./ffcs.html">FFCS</a></li>
         <li><a href="./reviews.html">Reviews</a></li>
-        <li><a href="./messit.html">MessIt</a></li>
+        <li><a href="./messit.html" class="active">MessIt</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <section class="hero" id="hero" style="min-height:auto; padding-top:110px; padding-bottom:3rem;">
-    <canvas id="hero-canvas" style="display:none;"></canvas>
-    <div class="hero-content" style="max-width: 1000px;">
-      <div class="hero-badge">🍛 MessIt</div>
-      <h1 class="hero-title">Find.<br /><span class="gradient-text">Today’s</span><br />Menu.</h1>
-      <p class="hero-sub" style="margin-bottom:1.5rem;">
-        Select Hostel and Mess type to see today’s mess menu.
-      </p>
+  <div class="mess-container">
+    <div class="mess-header reveal">
+      <h1>Mess<span>It</span></h1>
+      <p style="color:var(--text-dim);font-size:1.1rem" id="today-date">Loading...</p>
     </div>
-  </section>
 
-  <!-- MessIt Section -->
-  <section id="messit" class="section" style="padding-top:2rem;">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">MESSIT</span>
-        <h2 class="section-title">Mess It 🍛</h2>
-        <p class="section-sub">Find mess menu by Hostel and Mess type</p>
+    <div class="mess-controls reveal">
+      <select id="mess-select" class="mess-select">
+        <option value="Special">Special Mess</option>
+        <option value="Non-Veg">Non-Veg Mess</option>
+        <option value="Veg">Veg Mess</option>
+      </select>
+      <select id="day-select" class="mess-select">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+      </select>
+    </div>
+
+    <div class="menu-grid">
+      <!-- Breakfast -->
+      <div class="meal-card reveal" id="card-breakfast">
+        <div class="meal-title">🥞 Breakfast</div>
+        <span class="meal-time">07:30 AM - 09:00 AM</span>
+        <div class="menu-items" id="menu-breakfast">Loading...</div>
+      </div>
+      
+      <!-- Lunch -->
+      <div class="meal-card reveal" id="card-lunch">
+        <div class="meal-title">🍛 Lunch</div>
+        <span class="meal-time">12:30 PM - 02:30 PM</span>
+        <div class="menu-items" id="menu-lunch">Loading...</div>
       </div>
 
-      <div class="calc-wrapper">
-        <div class="calc-card glass reveal">
-          <h3 class="calc-heading">Select your mess</h3>
+      <!-- Snacks -->
+      <div class="meal-card reveal" id="card-snacks">
+        <div class="meal-title">☕ Snacks</div>
+        <span class="meal-time">05:00 PM - 06:15 PM</span>
+        <div class="menu-items" id="menu-snacks">Loading...</div>
+      </div>
 
-          <div class="field-group">
-            <label class="field-label" for="mess-hostel">Hostel</label>
-            <select id="mess-hostel" class="calc-input" onchange="renderMessMenu()">
-              <option value="">Select Hostel</option>
-            </select>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="mess-type">Mess Type</label>
-            <select id="mess-type" class="calc-input" onchange="renderMessMenu()">
-              <option value="">Select Mess Type</option>
-            </select>
-          </div>
-
-          <div class="calc-result">
-            <div class="result-num" id="mess-title">--</div>
-            <div class="result-label">Today’s Menu</div>
-          </div>
-
-          <p id="mess-advice" class="gpa-advice" style="margin-top:0.75rem;"></p>
-        </div>
-
-        <div class="calc-card glass reveal">
-          <h3 class="calc-heading">Menu</h3>
-          <p class="calc-desc">Menu cards will appear here based on your selection.</p>
-          <div id="mess-menu" class="ffcs-results" style="max-height: 360px;"></div>
-        </div>
+      <!-- Dinner -->
+      <div class="meal-card reveal" id="card-dinner">
+        <div class="meal-title">🍲 Dinner</div>
+        <span class="meal-time">07:30 PM - 09:00 PM</span>
+        <div class="menu-items" id="menu-dinner">Loading...</div>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="logo" style="margin-bottom:.5rem">eduhub<span>vit</span></div>
-          <p style="opacity:.6;font-size:.9rem">Your all-in-one academic companion. Learn, plan and grow.</p>
-        </div>
-        <div>
-          <h4 class="footer-head">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">CGPA Calculator</a></li>
-            <li><a href="./nptel.html">NPTEL</a></li>
-            <li><a href="./ffcs.html">FFCS Planner</a></li>
-            <li><a href="./messit.html">MessIt</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Tools</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">GPA Calculator</a></li>
-            <li><a href="./cgpa-calculator.html">GPA Converter</a></li>
-            <li><a href="./ffcs.html">Timetable Planner</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Connect</h4>
-          <div class="social-links">
-            <a href="#" class="social-btn">GitHub</a>
-            <a href="#" class="social-btn">LinkedIn</a>
-            <a href="#" class="social-btn">Twitter</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 EduHub. Built with ❤️ for learners everywhere.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Chatbot Widget -->
-  <div class="chatbot-launcher" aria-hidden="false">
-    <button
-      id="chatbot-toggle"
-      class="chatbot-toggle"
-      type="button"
-      aria-label="Open chat assistant"
-      aria-controls="chatbot-panel"
-      aria-expanded="false"
-    >
-      <span aria-hidden="true">💬</span>
-      <span class="chatbot-badge" aria-hidden="true">!</span>
-    </button>
   </div>
 
-  <section id="chatbot-panel" class="chatbot-panel" aria-label="Chat assistant" aria-live="polite">
-    <header class="chatbot-header">
-      <div class="chatbot-title">
-        <div class="chatbot-avatar" aria-hidden="true">✦</div>
-        <div>
-          EduHubvit Assistant
-          <div class="chatbot-subtitle">Ask about CGPA, GPA planning, NPTEL, FFCS, or MessIt</div>
-        </div>
-      </div>
-      <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat assistant">✕</button>
-    </header>
-
-    <div id="chatbot-chips" class="chatbot-chips" aria-label="Quick prompts">
-      <button class="chatbot-chip" type="button" data-chip="How to calculate CGPA?">CGPA</button>
-      <button class="chatbot-chip" type="button" data-chip="Required GPA planner?">Required GPA</button>
-      <button class="chatbot-chip" type="button" data-chip="NPTEL courses">NPTEL</button>
-      <button class="chatbot-chip" type="button" data-chip="FFCS timetable planner">FFCS</button>
-      <button class="chatbot-chip" type="button" data-chip="MessIt menu">MessIt</button>
-    </div>
-
-    <div id="chatbot-messages" class="chatbot-messages" role="list" aria-label="Chat messages"></div>
-
-    <div class="chatbot-inputbar">
-      <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Type your question..." aria-label="Type your message" autocomplete="off" />
-      <button id="chatbot-send" class="chatbot-send" type="button" aria-label="Send message">➤</button>
-    </div>
-  </section>
-
-  <!-- Scripts -->
-  <script defer src="./js/mess.js"></script>
-  <script defer src="./js/main.js"></script>
-  <script defer src="./js/chatbot.js"></script>
+  <script src="./js/mess.js"></script>
 </body>
 </html>
