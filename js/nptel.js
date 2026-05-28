@@ -4,10 +4,16 @@ let allCourses = [];
 let activeFilter = 'All';
 
 // Init
-document.addEventListener('DOMContentLoaded', async () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+async function init() {
   setupFilters();
   await fetchCourses();
-});
+}
 
 async function fetchCourses() {
   try {

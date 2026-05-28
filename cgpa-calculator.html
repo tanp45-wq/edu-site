@@ -69,19 +69,19 @@
   </nav>
 
   <div class="calc-container">
-    <div class="calc-header reveal">
+    <div class="calc-header">
       <h1>Advanced CGPA Calculator</h1>
       <p style="color:var(--text-dim)">Accurate semester-wise tracking</p>
     </div>
 
-    <div class="calc-tabs reveal">
+    <div class="calc-tabs">
       <button class="calc-tab active" onclick="switchMainTab('cgpa')">CGPA Calculator</button>
       <button class="calc-tab" onclick="switchMainTab('target')">Target GPA</button>
       <button class="calc-tab" onclick="switchMainTab('converter')">GPA ↔ %</button>
     </div>
 
     <!-- MAIN CGPA CALCULATOR -->
-    <div id="cgpa-section" class="reveal">
+    <div id="cgpa-section">
       <div id="semesters-container">
         <!-- Semesters injected here -->
       </div>
@@ -95,7 +95,7 @@
     </div>
 
     <!-- TARGET GPA -->
-    <div id="target-section" class="reveal" style="display: none;">
+    <div id="target-section" style="display: none;">
       <div class="semester-block">
         <h3 style="margin-bottom:1.5rem;color:#fff">Calculate Required GPA</h3>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
@@ -115,7 +115,7 @@
     </div>
 
     <!-- CONVERTER -->
-    <div id="converter-section" class="reveal" style="display: none;">
+    <div id="converter-section" style="display: none;">
       <div class="semester-block text-center">
         <h3 style="margin-bottom:1.5rem;color:#fff">GPA to Percentage Converter</h3>
         <div class="calc-tabs" style="margin-bottom:1.5rem">
