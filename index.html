@@ -1,196 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduHub – Learn. Explore. Grow.</title>
-  <meta name="description" content="EduHub is a premium educational platform with CGPA calculator, NPTEL courses, FFCS planner, and more." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EduHub VIT — Student Tools</title>
+<meta name="description" content="VIT student tools: FFCS planner, CGPA calculator, NPTEL quiz prep, Mess menu and more."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#0e0e16;
+  --card:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.1);
+  --text:#e8eaf0;
+  --muted:rgba(232,234,240,0.55);
+  --blue:#4f8ef7;
+  --blue2:#7ab3ff;
+  --purple:#a78bfa;
+  --cyan:#38bdf8;
+  --green:#34d399;
+  --radius:16px;
+  --tr:0.25s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:64px;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-0.5px}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;gap:0.25rem;list-style:none}
+.nav-links a{
+  padding:0.4rem 0.85rem;border-radius:10px;
+  font-size:0.88rem;font-weight:500;color:var(--muted);
+  transition:var(--tr);
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.07)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--tr)}
+@media(max-width:700px){
+  .hamburger{display:flex}
+  .nav-links{
+    display:none;position:fixed;top:64px;left:0;right:0;
+    flex-direction:column;gap:0;padding:1rem;
+    background:rgba(10,10,15,0.98);border-bottom:1px solid var(--border);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:0.75rem 1rem}
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:6rem 1.5rem 4rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%,rgba(79,142,247,0.18),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%,rgba(167,139,250,0.12),transparent),
+    var(--bg);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:99px;
+  background:rgba(79,142,247,0.12);
+  border:1px solid rgba(79,142,247,0.3);
+  color:var(--blue2);font-size:0.8rem;font-weight:600;
+  margin-bottom:1.5rem;letter-spacing:0.5px;
+}
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-0.04em;color:#fff;
+  margin-bottom:1.25rem;
+}
+.hero h1 .grad{
+  background:linear-gradient(135deg,var(--blue),var(--cyan),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:540px;margin:0 auto 2.5rem;line-height:1.75}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-prim{
+  padding:0.75rem 1.75rem;border-radius:12px;font-weight:700;font-size:0.95rem;
+  background:var(--blue);color:#fff;border:none;cursor:pointer;
+  box-shadow:0 6px 24px rgba(79,142,247,0.35);transition:var(--tr);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-prim:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(79,142,247,0.45)}
+.btn-ghost{
+  padding:0.75rem 1.75rem;border-radius:12px;font-weight:600;font-size:0.95rem;
+  background:transparent;color:var(--text);
+  border:1.5px solid var(--border);cursor:pointer;transition:var(--tr);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-ghost:hover{border-color:var(--blue2);color:var(--blue2);transform:translateY(-2px)}
+
+/* TOOLS GRID */
+.section{padding:5rem 0}
+.container{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+.sec-tag{
+  display:inline-block;
+  font-size:0.7rem;font-weight:700;letter-spacing:2px;
+  color:var(--blue2);background:rgba(79,142,247,0.1);
+  padding:4px 12px;border-radius:99px;
+  border:1px solid rgba(79,142,247,0.2);margin-bottom:0.75rem;
+}
+.sec-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;
+  color:#fff;margin-bottom:0.6rem;letter-spacing:-0.03em;
+}
+.sec-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7}
+.sec-head{margin-bottom:3rem}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.tool-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.75rem;
+  transition:var(--tr);
+  cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.tool-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(79,142,247,0.06),transparent);
+  opacity:0;transition:var(--tr);
+}
+.tool-card:hover{transform:translateY(-6px);border-color:rgba(79,142,247,0.35);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.tool-card:hover::before{opacity:1}
+.tool-icon{font-size:2.2rem;margin-bottom:1rem}
+.tool-tag{
+  display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:1px;
+  padding:3px 10px;border-radius:99px;margin-bottom:0.75rem;
+}
+.tag-blue{background:rgba(79,142,247,0.15);color:var(--blue2);border:1px solid rgba(79,142,247,0.25)}
+.tag-purple{background:rgba(167,139,250,0.15);color:var(--purple);border:1px solid rgba(167,139,250,0.25)}
+.tag-green{background:rgba(52,211,153,0.15);color:var(--green);border:1px solid rgba(52,211,153,0.25)}
+.tag-cyan{background:rgba(56,189,248,0.15);color:var(--cyan);border:1px solid rgba(56,189,248,0.25)}
+.tool-card h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+.tool-card p{font-size:0.875rem;color:var(--muted);line-height:1.65}
+.tool-arrow{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:1.25rem;color:var(--blue2);font-size:0.85rem;font-weight:600;
+  transition:var(--tr);
+}
+.tool-card:hover .tool-arrow{gap:10px}
+
+/* STATS */
+.stats-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1rem;margin-top:4rem;
+}
+.stat-box{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.5rem;text-align:center;
+}
+.stat-num{
+  font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:800;
+  color:var(--blue2);line-height:1;margin-bottom:0.4rem;
+}
+.stat-lbl{font-size:0.85rem;color:var(--muted);font-weight:500}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);padding:2.5rem 1.5rem;
+  text-align:center;color:var(--muted);font-size:0.875rem;
+}
+footer a{color:var(--blue2);font-weight:500}
+footer a:hover{color:#fff}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav id="navbar" class="navbar">
-    <div class="nav-inner">
-      <div class="logo">eduhub<span>vit</span></div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="./cgpa-calculator.html">Calculator</a></li>
-        <li><a href="./nptel.html">NPTEL</a></li>
-        <li><a href="./ffcs.html">FFCS</a></li>
-        <li><a href="./reviews.html">Reviews</a></li>
-        <li><a href="./messit.html">MessIt</a></li>
-      </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section (Landing) -->
-  <section id="hero" class="hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-badge">🚀 Next-Gen Learning Platform</div>
-      <h1 class="hero-title">Learn.<br /><span class="gradient-text">Explore.</span><br />Grow.</h1>
-      <p class="hero-sub">Your academic companion with CGPA tools, NPTEL courses, FFCS planner, Reviews, and MessIt.</p>
-      <div class="hero-cta">
-        <a href="./cgpa-calculator.html" class="btn btn-primary">Start Learning</a>
-        <a href="./cgpa-calculator.html" class="btn btn-outline">CGPA Calculator</a>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <span class="scroll-text">Explore Tools</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-
-
-
-  <!-- Landing: Tool cards -->
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="stats-grid" style="grid-template-columns: repeat(12, 1fr); gap: 1rem;">
-        <a class="stat-card glass reveal" style="grid-column: span 4; text-decoration:none; cursor:pointer;" href="./cgpa-calculator.html">
-          <div class="stat-icon">🧮</div>
-          <div class="stat-num" style="font-size:1.1rem; margin-top:.35rem; opacity:.95;">CGPA Tools</div>
-          <div class="stat-label">Calculator • Planner • Converter</div>
-        </a>
-        <a class="stat-card glass reveal" style="grid-column: span 4; text-decoration:none; cursor:pointer;" href="./nptel.html">
-          <div class="stat-icon">📚</div>
-          <div class="stat-num" style="font-size:1.1rem; margin-top:.35rem; opacity:.95;">NPTEL</div>
-          <div class="stat-label">Free courses & filters</div>
-        </a>
-        <a class="stat-card glass reveal" style="grid-column: span 4; text-decoration:none; cursor:pointer;" href="./ffcs.html">
-          <div class="stat-icon">📅</div>
-          <div class="stat-num" style="font-size:1.1rem; margin-top:.35rem; opacity:.95;">FFCS</div>
-          <div class="stat-label">Timetable planner</div>
-        </a>
-      </div>
-
-      <div class="stats-grid" style="grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-top:1.25rem;">
-        <a class="stat-card glass reveal" style="grid-column: span 6; text-decoration:none; cursor:pointer;" href="./reviews.html">
-          <div class="stat-icon">💬</div>
-          <div class="stat-num" style="font-size:1.1rem; margin-top:.35rem; opacity:.95;">Reviews</div>
-          <div class="stat-label">What learners say</div>
-        </a>
-        <a class="stat-card glass reveal" style="grid-column: span 6; text-decoration:none; cursor:pointer;" href="./messit.html">
-          <div class="stat-icon">🍛</div>
-          <div class="stat-num" style="font-size:1.1rem; margin-top:.35rem; opacity:.95;">MessIt</div>
-          <div class="stat-label">Today’s mess menu</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="logo" style="margin-bottom:.5rem">eduhub<span>vit</span></div>
-          <p style="opacity:.6;font-size:.9rem">Your all-in-one academic companion. Learn, plan and grow.</p>
-        </div>
-        <div>
-          <h4 class="footer-head">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">CGPA Calculator</a></li>
-            <li><a href="./nptel.html">NPTEL</a></li>
-            <li><a href="./ffcs.html">FFCS Planner</a></li>
-            <li><a href="./messit.html">MessIt</a></li>
-            <li><a href="./reviews.html">Reviews</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Tools</h4>
-          <ul class="footer-links">
-            <li><a href="./cgpa-calculator.html">GPA Calculator</a></li>
-            <li><a href="./cgpa-calculator.html">GPA Converter</a></li>
-            <li><a href="./ffcs.html">Timetable Planner</a></li>
-            <li><a href="./messit.html">MessIt Menu</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-head">Connect</h4>
-          <div class="social-links">
-            <a href="#" class="social-btn">GitHub</a>
-            <a href="#" class="social-btn">LinkedIn</a>
-            <a href="#" class="social-btn">Twitter</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 EduHub. Built with ❤️ for learners everywhere.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Chatbot Widget -->
-  <div class="chatbot-launcher" aria-hidden="false">
-    <button
-      id="chatbot-toggle"
-      class="chatbot-toggle"
-      type="button"
-      aria-label="Open chat assistant"
-      aria-controls="chatbot-panel"
-      aria-expanded="false"
-    >
-      <span aria-hidden="true">💬</span>
-      <span class="chatbot-badge" aria-hidden="true">!</span>
-    </button>
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">Edu<span>Hub</span> VIT</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="nptel.html">NPTEL Quiz</a></li>
+    <li><a href="ffcs.html">FFCS</a></li>
+    <li><a href="cgpa-calculator.html">CGPA/GPA</a></li>
+    <li><a href="messit.html">Mess Menu</a></li>
+    <li><a href="pyq.html">PYQ</a></li>
+  </ul>
+  <div class="hamburger" id="ham" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
   </div>
+</nav>
 
-  <section id="chatbot-panel" class="chatbot-panel" aria-label="Chat assistant" aria-live="polite">
-    <header class="chatbot-header">
-      <div class="chatbot-title">
-        <div class="chatbot-avatar" aria-hidden="true">✦</div>
-        <div>
-          EduHubvit Assistant
-          <div class="chatbot-subtitle">
-            Ask about CGPA, GPA planning, NPTEL, FFCS, or MessIt
-          </div>
-        </div>
-      </div>
-      <button id="chatbot-close" class="chatbot-close" type="button" aria-label="Close chat assistant">
-        ✕
-      </button>
-    </header>
+<section class="hero">
+  <div>
+    <div class="hero-badge">⚡ Built for VIT Students</div>
+    <h1>Your Academic<br><span class="grad">Command Center</span></h1>
+    <p>FFCS planner, CGPA calculator, NPTEL quiz prep, mess menu & more — all in one place.</p>
+    <div class="hero-cta">
+      <a href="nptel.html" class="btn-prim">🎯 Start NPTEL Quiz</a>
+      <a href="ffcs.html" class="btn-ghost">📅 Plan My FFCS</a>
+    </div>
+  </div>
+</section>
 
-    <div id="chatbot-chips" class="chatbot-chips" aria-label="Quick prompts">
-      <button class="chatbot-chip" type="button" data-chip="How to calculate CGPA?">CGPA</button>
-      <button class="chatbot-chip" type="button" data-chip="Required GPA planner?">Required GPA</button>
-      <button class="chatbot-chip" type="button" data-chip="NPTEL courses">NPTEL</button>
-      <button class="chatbot-chip" type="button" data-chip="FFCS timetable planner">FFCS</button>
-      <button class="chatbot-chip" type="button" data-chip="MessIt menu">MessIt</button>
+<section class="section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">TOOLS</div>
+      <h2 class="sec-title">Everything You Need</h2>
+      <p class="sec-sub">Hand-picked tools built specifically for VIT students to make campus life easier.</p>
+    </div>
+    <div class="tools-grid">
+      <a href="nptel.html" class="tool-card">
+        <div class="tool-icon">🎓</div>
+        <div class="tool-tag tag-blue">QUIZ</div>
+        <h3>NPTEL Quiz Prep</h3>
+        <p>Practice CS, Math, EE, and Mech questions. Randomised every attempt. Track your score.</p>
+        <div class="tool-arrow">Start practicing →</div>
+      </a>
+      <a href="ffcs.html" class="tool-card">
+        <div class="tool-icon">📅</div>
+        <div class="tool-tag tag-purple">SCHEDULER</div>
+        <h3>FFCS Planner</h3>
+        <p>Search courses by slot, view your timetable, and plan your semester without conflicts.</p>
+        <div class="tool-arrow">Plan my slots →</div>
+      </a>
+      <a href="cgpa-calculator.html" class="tool-card">
+        <div class="tool-icon">🧮</div>
+        <div class="tool-tag tag-green">CALCULATOR</div>
+        <h3>CGPA / GPA Calculator</h3>
+        <p>Calculate your GPA for the semester or cumulative CGPA. Add any number of subjects.</p>
+        <div class="tool-arrow">Calculate now →</div>
+      </a>
+      <a href="messit.html" class="tool-card">
+        <div class="tool-icon">🍽️</div>
+        <div class="tool-tag tag-cyan">MESS</div>
+        <h3>Mess Menu</h3>
+        <p>Today's breakfast, lunch, snacks and dinner menu across all mess halls at VIT.</p>
+        <div class="tool-arrow">View today's menu →</div>
+      </a>
+      <a href="pyq.html" class="tool-card">
+        <div class="tool-icon">📄</div>
+        <div class="tool-tag tag-blue">PAPERS</div>
+        <h3>Previous Year Questions</h3>
+        <p>Browse and search PYQ by subject, year and type to ace your CATs and FAT exams.</p>
+        <div class="tool-arrow">Browse papers →</div>
+      </a>
     </div>
 
-    <div id="chatbot-messages" class="chatbot-messages" role="list" aria-label="Chat messages"></div>
-
-    <div class="chatbot-inputbar">
-      <input
-        id="chatbot-input"
-        class="chatbot-input"
-        type="text"
-        placeholder="Type your question..."
-        aria-label="Type your message"
-        autocomplete="off"
-      />
-      <button id="chatbot-send" class="chatbot-send" type="button" aria-label="Send message">
-        ➤
-      </button>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">4+</div><div class="stat-lbl">Tools Available</div></div>
+      <div class="stat-box"><div class="stat-num">48</div><div class="stat-lbl">Quiz Questions</div></div>
+      <div class="stat-box"><div class="stat-num">100+</div><div class="stat-lbl">FFCS Slots</div></div>
+      <div class="stat-box"><div class="stat-num">Free</div><div class="stat-lbl">Always</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Scripts -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-  <script defer src="./js/hero-scene.js"></script>
-  <script defer src="./js/cards.js"></script>
-  <script defer src="./js/main.js"></script>
-  <script defer src="./js/chatbot.js"></script>
+<footer>
+  <div class="container">
+    <p>Built with ❤️ for VIT students · <a href="index.html">Home</a> · <a href="nptel.html">NPTEL</a> · <a href="ffcs.html">FFCS</a> · <a href="cgpa-calculator.html">CGPA</a></p>
+  </div>
+</footer>
+
+<script>
+const ham = document.getElementById('ham');
+const nav = document.getElementById('navLinks');
+ham.addEventListener('click', () => nav.classList.toggle('open'));
+ham.addEventListener('keydown', e => { if(e.key==='Enter') nav.classList.toggle('open'); });
+</script>
 </body>
 </html>
-
-
- 

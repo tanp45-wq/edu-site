@@ -37,14 +37,11 @@ try {
   const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
 
   // Only animate elements that are explicitly marked as reveal
-  document.querySelectorAll('.reveal').forEach(el => {
-    scrollObserver.observe(el);
-  });
-
-  // Ensure hero is visible immediately (prevents "blank" feeling)
-  const hero = document.getElementById('hero');
-  if (hero) hero.style.opacity = '1';
-} catch (e) {
-  // Fallback: if IntersectionObserver fails, just show reveals
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-}
+
+// Only animate elements that are explicitly marked as reveal
+document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+// Ensure hero is visible immediately (prevents "blank" feeling)
+const hero = document.getElementById('hero');
+if (hero) hero.style.opacity = '1';
