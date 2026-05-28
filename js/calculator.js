@@ -1,4 +1,4 @@
-// calculator.js – Complete VITrendz Replica Logic
+// calculator.js – Complete Logic
 
 let semesters = [];
 let semCount = 0;
@@ -9,7 +9,9 @@ function switchMainTab(tab) {
   document.getElementById('converter-section').style.display = tab === 'converter' ? '' : 'none';
   
   document.querySelectorAll('.calc-tabs .calc-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+  if (tab === 'cgpa') document.querySelectorAll('.calc-tabs .calc-tab')[0].classList.add('active');
+  if (tab === 'target') document.querySelectorAll('.calc-tabs .calc-tab')[1].classList.add('active');
+  if (tab === 'converter') document.querySelectorAll('.calc-tabs .calc-tab')[2].classList.add('active');
 }
 
 /* ───── Semester-Wise CGPA Calculator ───── */

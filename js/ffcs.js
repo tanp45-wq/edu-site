@@ -1,4 +1,4 @@
-// ffcs.js – Advanced FFCS Planner (CampusBro Style)
+// ffcs.js – Advanced FFCS Planner
 
 const FFCS_DATA = [
   { code: 'CSE1001', name: 'Problem Solving & OOP', credits: 5, slots: ['A1','L1'], color: '#2563eb' },
